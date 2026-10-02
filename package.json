@@ -1,0 +1,47 @@
+{
+  "name": "angel-whispers-masterclass",
+  "version": "1.0.0",
+  "description": "Angel Discovery Tool - Descubre tu Arcángel Guardián basado en numerología angelical",
+  "main": "index.html",
+  "scripts": {
+    "serve": "python -m http.server 8000",
+    "serve-node": "npx http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcelagomezabundis/angel-whispers-masterclass.git"
+  },
+  "keywords": [
+    "angel",
+    "archangel",
+    "numerology",
+    "spiritual",
+    "meditation",
+    "masterclass",
+    "munaay",
+    "interactive",
+    "web-app"
+  ],
+  "author": "Marcela Gómez Abundis",
+  "contributors": [
+    {
+      "name": "Janine Sosa",
+      "email": "munaay@cosmico.com",
+      "url": "https://munaaycosmico.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcelagomezabundis/angel-whispers-masterclass/issues"
+  },
+  "homepage": "https://github.com/marcelagomezabundis/angel-whispers-masterclass#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1"
+  }
+}

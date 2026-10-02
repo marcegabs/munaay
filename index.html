@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angel Whispers Masterclass - Descubre tu Arcángel</title>
+  <meta name="description" content="Descubre tu Arcángel Guardián basado en numerología angelical. Angel Whispers Masterclass de MUNAAY Cósmico.">
+  <meta name="theme-color" content="#d4af37">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); 
+      min-height: 100vh; 
+      display: flex; 
+      flex-direction: column;
+      align-items: center; 
+      justify-content: center; 
+      padding: 20px; 
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.3));
+    }
+    .header h1 {
+      font-size: 24px;
+      color: #d4af37;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    .header p {
+      font-size: 13px;
+      color: #bbb;
+      margin: 0;
+    }
+    .container { 
+      width: 100%; 
+      max-width: 500px; 
+    }
+    .form-section, .ritual-section, .result-section { 
+      background: rgba(255, 255, 255, 0.98); 
+      border-radius: 20px; 
+      padding: 40px; 
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); 
+      transition: all 0.4s ease; 
+    }
+    .hidden { display: none; }
+    .form-section h2, .ritual-section h2, .result-section h2 { 
+      text-align: center; 
+      font-size: 22px; 
+      background: linear-gradient(135deg, #d4af37 0%, #f4a540 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      background-clip: text; 
+      margin-bottom: 25px; 
+      font-weight: 600; 
+    }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; font-size: 14px; color: #666; margin-bottom: 8px; font-weight: 500; }
+    input { 
+      width: 100%; 
+      padding: 12px; 
+      border: 2px solid #e0e0e0; 
+      border-radius: 10px; 
+      font-size: 16px; 
+      transition: all 0.3s ease; 
+    }
+    input:focus { 
+      outline: none; 
+      border-color: #d4af37; 
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); 
+    }
+    button { 
+      width: 100%; 
+      padding: 14px; 
+      background: linear-gradient(135deg, #d4af37 0%, #f4a540 100%); 
+      color: #fff; 
+      border: none; 
+      border-radius: 10px; 
+      font-size: 16px; 
+      font-weight: 600; 
+      cursor: pointer; 
+      transition: all 0.3s ease; 
+      margin-top: 10px; 
+    }
+    button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); }
+    button:active { transform: translateY(0); }
+    .ritual-text { 
+      text-align: center; 
+      font-size: 18px; 
+      color: #333; 
+      line-height: 1.6; 
+      margin-bottom: 30px; 
+    }
+    .breathing-circle { 
+      width: 120px; 
+      height: 120px; 
+      margin: 40px auto; 
+      background: linear-gradient(135deg, #d4af37 0%, #f4a540 100%); 
+      border-radius: 50%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-size: 14px; 
+      color: #fff; 
+      animation: breathe 8s infinite; 
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.5); 
+    }
+    @keyframes breathe { 
+      0%, 100% { transform: scale(1); opacity: 0.6; } 
+      50% { transform: scale(1.2); opacity: 1; } 
+    }
+    .result-section { 
+      animation: slideInUp 0.6s ease, glow 3s ease-in-out infinite; 
+    }
+    @keyframes slideInUp { 
+      from { opacity: 0; transform: translateY(30px); } 
+      to { opacity: 1; transform: translateY(0); } 
+    }
+    @keyframes glow { 
+      0%, 100% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 30px rgba(212, 175, 55, 0.3); } 
+      50% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 50px rgba(212, 175, 55, 0.5); } 
+    }
+    .angel-card { 
+      text-align: center; 
+      padding: 30px 20px; 
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(244, 165, 64, 0.1) 100%); 
+      border-radius: 15px; 
+      margin-bottom: 20px; 
+      border: 2px solid #d4af37; 
+    }
+    .angel-card h2 { 
+      font-size: 32px; 
+      color: #d4af37; 
+      margin-bottom: 10px; 
+      font-weight: 700; 
+    }
+    .angel-title { 
+      font-size: 16px; 
+      color: #f4a540; 
+      margin-bottom: 20px; 
+      font-style: italic; 
+    }
+    .angel-role { 
+      font-size: 14px; 
+      color: #666; 
+      margin-bottom: 15px; 
+      font-weight: 500; 
+    }
+    .sacred-code { 
+      font-size: 20px; 
+      font-weight: 700; 
+      color: #d4af37; 
+      margin: 15px 0; 
+      letter-spacing: 2px; 
+    }
+    .angel-description { 
+      font-size: 14px; 
+      color: #555; 
+      line-height: 1.6; 
+      margin: 15px 0; 
+    }
+    .empowering-message { 
+      font-size: 15px; 
+      color: #333; 
+      line-height: 1.7; 
+      margin-top: 20px; 
+      padding: 15px; 
+      background: rgba(212, 175, 55, 0.05); 
+      border-left: 4px solid #d4af37; 
+      border-radius: 5px; 
+      font-style: italic; 
+    }
+    .action-buttons { 
+      display: flex; 
+      gap: 10px; 
+      margin-top: 20px; 
+      flex-wrap: wrap; 
+    }
+    .action-buttons button { 
+      flex: 1; 
+      min-width: 120px; 
+      font-size: 14px; 
+      padding: 12px; 
+      margin-top: 0; 
+    }
+    .download-btn { background: linear-gradient(135deg, #d4af37 0%, #f4a540 100%); }
+    .share-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .another-btn { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+    #cardImage { display: none; }
+    .error { color: #e74c3c; font-size: 13px; margin-top: 5px; }
+    .footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+    }
+    .footer p {
+      margin: 5px 0;
+    }
+    @media (max-width: 600px) {
+      .form-section, .ritual-section, .result-section {
+        padding: 25px;
+      }
+      .form-section h2, .ritual-section h2, .result-section h2 {
+        font-size: 18px;
+      }
+      .action-buttons {
+        flex-direction: column;
+      }
+      .action-buttons button {
+        flex: 1;
+        min-width: unset;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <svg class="logo" viewBox="0 0 200 65" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#f4a540;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <text x="100" y="50" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="url(#logoGrad)">✨</text>
+    </svg>
+    <h1>Angel Whispers Masterclass</h1>
+    <p>MUNAAY Cósmico</p>
+  </div>
+
+  <div class="container">
+    <div id="formSection" class="form-section">
+      <h2>✨ Descubre tu Arcángel Guardián</h2>
+      <form id="angelForm">
+        <div class="form-group">
+          <label for="name">Tu nombre</label>
+          <input type="text" id="name" placeholder="Escribe tu nombre aquí" required>
+          <div class="error" id="nameError"></div>
+        </div>
+        <div class="form-group">
+          <label for="birthday">Día de nacimiento</label>
+          <input type="date" id="birthday" required>
+          <div class="error" id="birthdayError"></div>
+        </div>
+        <button type="submit">Revelar mi Arcángel</button>
+      </form>
+    </div>
+
+    <div id="ritualSection" class="ritual-section hidden">
+      <h2>🙏 Ritual de Conexión</h2>
+      <div class="ritual-text">Cierra los ojos, respira profundo</div>
+      <div class="breathing-circle">Respira...</div>
+      <div class="ritual-text" style="font-size: 16px; margin-top: 30px; color: #999;">La magia se despliega...</div>
+    </div>
+
+    <div id="resultSection" class="result-section hidden">
+      <h2>✨ Tu Arcángel es...</h2>
+      <div class="angel-card">
+        <div class="angel-title" id="angelRole"></div>
+        <h2 id="angelName"></h2>
+        <div class="angel-role" id="angelTitle"></div>
+        <div class="sacred-code" id="sacredCode"></div>
+        <div class="angel-description" id="angelDescription"></div>
+        <div class="empowering-message" id="empoweringMessage"></div>
+      </div>
+      <div class="action-buttons">
+        <button class="download-btn" onclick="downloadCard()">📥 Descargar</button>
+        <button class="share-btn" onclick="shareOnSocial()">📱 Compartir</button>
+        <button class="another-btn" onclick="resetForm()">🔄 Otro</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Angel Whispers Masterclass • 26 de Octubre, 2026</p>
+    <p>MUNAAY Cósmico (@munaaycosmico)</p>
+  </div>
+
+  <div id="cardImage" style="width: 1080px; padding: 60px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); text-align: center; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"></div>
+
+  <script>
+    const angels = {
+      1: { name: 'Miguel', title: 'Arcángel de la Protección', role: 'Protector Divino', code: '613', description: 'Te guía hacia el coraje y la valentía. Miguel ilumina tu camino removiendo obstáculos y protegiéndote de energías negativas.', characteristics: ['Protección', 'Coraje', 'Poder espiritual', 'Fuerza divina'] },
+      2: { name: 'Chamuel', title: 'Arcángel del Amor', role: 'Mensajero del Corazón', code: '725', description: 'Abre tu corazón a la compasión y el amor incondicional. Chamuel te ayuda a sanar relaciones y encontrar paz interior.', characteristics: ['Amor', 'Compasión', 'Conexión', 'Paz emocional'] },
+      3: { name: 'Gabriel', title: 'Arcángel de la Comunicación', role: 'Mensajero Celestial', code: '881', description: 'Potencia tu voz y expresión. Gabriel te inspira a comunicar con claridad, creatividad y propósito divino.', characteristics: ['Comunicación', 'Creatividad', 'Claridad', 'Inspiración'] },
+      4: { name: 'Uriel', title: 'Arcángel de la Paz', role: 'Guardián de la Sabiduría', code: '411', description: 'Trae serenidad a tu vida y a tu mente. Uriel disipa la confusión y te guía hacia decisiones sabias.', characteristics: ['Paz', 'Sabiduría', 'Serenidad', 'Entendimiento'] },
+      5: { name: 'Jofiel', title: 'Arcángel de la Iluminación', role: 'Portador de Luz', code: '521', description: 'Ilumina tu camino espiritual y despierta tu potencial latente. Jofiel te ayuda a ver la belleza en todo.', characteristics: ['Iluminación', 'Belleza', 'Crecimiento', 'Despertar'] },
+      6: { name: 'Rafael', title: 'Arcángel de la Sanación', role: 'Sanador Divino', code: '29', description: 'Canaliza energía de sanación hacia cuerpo, mente y espíritu. Rafael te acompaña en procesos de transformación y bienestar.', characteristics: ['Sanación', 'Bienestar', 'Transformación', 'Renovación'] },
+      7: { name: 'Raziel', title: 'Arcángel de los Secretos', role: 'Guardián del Misterio', code: '679', description: 'Revelaré los secretos del universo y tu propósito divino. Raziel te conecta con la magia de la manifestación.', characteristics: ['Misterio', 'Intuición', 'Conocimiento oculto', 'Manifestación'] },
+      8: { name: 'Zadquiel', title: 'Arcángel de la Transformación', role: 'Agente del Cambio', code: '389', description: 'Facilita cambios profundos y evolución. Zadquiel te acompaña a través de transiciones hacia tu mejor versión.', characteristics: ['Transformación', 'Cambio', 'Evolución', 'Renovación'] },
+      9: { name: 'Metatrón', title: 'Guardián del Tiempo', role: 'Escriba Celestial', code: '331', description: 'Testigo de tu alma, Metatrón te guía hacia la sabiduría ancestral y el cierre de ciclos completos.', characteristics: ['Sabiduría', 'Equilibrio', 'Integración', 'Plenitud'] },
+      11: { name: 'Nathaniel', title: 'Arcángel de Cambios y Transformaciones', role: 'Catalizador del Destino', code: '334', description: 'Maestro del cambio, guía tus transformaciones con gracia. Nathaniel abre puertas hacia nuevas etapas de tu vida.', characteristics: ['Cambio', 'Transformación', 'Apertura', 'Destino'] },
+      22: { name: 'Sandafón', title: 'Protector de la Madre Tierra', role: 'Guardián de la Naturaleza', code: '820', description: 'Te conecta con la energía de la tierra y el propósito cósmico. Sandafón te ancla mientras evolucionas.', characteristics: ['Conexión terrenal', 'Propósito cósmico', 'Anclaje', 'Armonía'] }
+    };
+
+    const messages = {
+      1: '✨ Tu protector te envuelve en luz dorada. Confía en tu fuerza interior.',
+      2: '💕 Abre tu corazón. El amor transforma todo lo que toca.',
+      3: '🎤 Tu voz es poderosa. Expresa tu verdad con confianza.',
+      4: '🕊️ La paz que buscas vive en tu interior. Respira con calma.',
+      5: '☀️ Tu luz brilla más cada día. Ilumina el camino de otros.',
+      6: '✨ Tu sanación ya ha comenzado. Confía en el proceso.',
+      7: '🔮 Los secretos del universo se revelan a los buscadores.',
+      8: '🦋 Tu transformación es hermosa y necesaria. Abraza el cambio.',
+      9: '⏳ Eres guardián de ciclos completos. Cierra con gracia.',
+      11: '🌟 Grandes cambios vienen. Abre las puertas con fe.',
+      22: '🌍 Conecta con la tierra. Tu propósito es cósmico.'
+    };
+
+    document.getElementById('angelForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const birthday = document.getElementById('birthday').value;
+      
+      if (!name) {
+        document.getElementById('nameError').textContent = 'Por favor ingresa tu nombre';
+        return;
+      }
+      if (!birthday) {
+        document.getElementById('birthdayError').textContent = 'Por favor selecciona tu fecha de nacimiento';
+        return;
+      }
+      
+      const day = parseInt(birthday.split('-')[2]);
+      let essence = day;
+      
+      if (essence !== 11 && essence !== 22) {
+        while (essence > 9) {
+          essence = Math.floor(essence / 10) + (essence % 10);
+        }
+      }
+      
+      showRitual();
+      setTimeout(() => showResult(name, essence), 4000);
+    });
+
+    function showRitual() {
+      document.getElementById('formSection').classList.add('hidden');
+      document.getElementById('ritualSection').classList.remove('hidden');
+    }
+
+    function showResult(name, essence) {
+      const angel = angels[essence];
+      document.getElementById('ritualSection').classList.add('hidden');
+      document.getElementById('resultSection').classList.remove('hidden');
+      
+      document.getElementById('angelRole').textContent = angel.role;
+      document.getElementById('angelName').textContent = angel.name;
+      document.getElementById('angelTitle').textContent = angel.title;
+      document.getElementById('sacredCode').textContent = `Código: ${angel.code}`;
+      document.getElementById('angelDescription').textContent = angel.description;
+      document.getElementById('empoweringMessage').textContent = `Para ${name}: ${messages[essence]}`;
+      
+      generateCardImage(name, angel, essence);
+    }
+
+    function generateCardImage(name, angel, essence) {
+      const cardDiv = document.getElementById('cardImage');
+      cardDiv.innerHTML = `
+        <div style="padding: 60px; text-align: center;">
+          <h2 style="font-size: 24px; margin-bottom: 10px; color: #d4af37;">${name}</h2>
+          <p style="font-size: 18px; color: #f4a540; margin-bottom: 20px;">${angel.role}</p>
+          <h1 style="font-size: 48px; color: #d4af37; margin-bottom: 20px; font-weight: 700;">${angel.name}</h1>
+          <p style="font-size: 16px; color: #ccc; margin-bottom: 30px;">${angel.title}</p>
+          <p style="font-size: 20px; color: #d4af37; margin: 20px 0; letter-spacing: 2px;">Código: ${angel.code}</p>
+          <p style="font-size: 14px; color: #bbb; line-height: 1.6; margin: 30px 0; max-width: 400px; margin-left: auto; margin-right: auto;">${angel.description}</p>
+          <p style="font-size: 16px; color: #f4a540; margin-top: 40px; font-style: italic;">Angel Whispers Masterclass • MUNAAY Cósmico</p>
+        </div>
+      `;
+    }
+
+    function downloadCard() {
+      const cardImage = document.getElementById('cardImage');
+      html2canvas(cardImage, { backgroundColor: '#1a1a2e', scale: 2 }).then(canvas => {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = `mi-arcangel-${new Date().getTime()}.png`;
+        link.click();
+      });
+    }
+
+    function shareOnSocial() {
+      const name = document.getElementById('name').value;
+      const angelName = document.getElementById('angelName').textContent;
+      const text = `✨ He descubierto mi Arcángel Guardián: ${angelName}. Soy ${name} y estoy conectado/a con su energía divina. ¿Cuál es tu arcángel? 🙏 #AngelWhispers #MUNAAYCosmico`;
+      
+      if (navigator.share) {
+        navigator.share({
+          title: 'Mi Arcángel Guardián',
+          text: text,
+          url: window.location.href
+        }).catch(err => console.log('Error al compartir'));
+      } else {
+        const urls = {
+          twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
+          facebook: `https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(text)}`,
+          whatsapp: `https://wa.me/?text=${encodeURIComponent(text)}`
+        };
+        alert('Comparte tu descubrimiento:\n\n' + text);
+        window.open(urls.twitter, '_blank');
+      }
+    }
+
+    function resetForm() {
+      document.getElementById('angelForm').reset();
+      document.getElementById('nameError').textContent = '';
+      document.getElementById('birthdayError').textContent = '';
+      document.getElementById('resultSection').classList.add('hidden');
+      document.getElementById('formSection').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
