@@ -413,7 +413,18 @@
 
     function downloadCard() {
       const card = document.getElementById('tarotCard');
-      document.fonts.ready.then(() => html2canvas(card, { backgroundColor: null, scale: 2, useCORS: true })).then(canvas => {
+      // Render at the full desktop card size and 3x density so the download is sharp on any screen
+      const exportOptions = {
+        backgroundColor: null,
+        scale: 3,
+        useCORS: true,
+        onclone: doc => {
+          const clone = doc.getElementById('tarotCard');
+          clone.style.width = '420px';
+          clone.style.maxWidth = 'none';
+        }
+      };
+      document.fonts.ready.then(() => html2canvas(card, exportOptions)).then(canvas => {
         const link = document.createElement('a');
         link.href = canvas.toDataURL('image/png');
         link.download = `mi-arcangel-${new Date().getTime()}.png`;
