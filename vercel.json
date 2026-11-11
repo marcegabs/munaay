@@ -1,6 +1,7 @@
 {
   "redirects": [
     { "source": "/landing", "destination": "/", "permanent": true },
-    { "source": "/landing/:path*", "destination": "/:path*", "permanent": true }
+    { "source": "/landing/", "destination": "/", "permanent": true },
+    { "source": "/landing/:path+", "destination": "/:path+", "permanent": true }
   ]
 }
