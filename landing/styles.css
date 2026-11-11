@@ -399,3 +399,29 @@ details[open] > summary ~ * { animation: unfold 260ms var(--ease-out); }
   details[open] > summary ~ * { animation: none; }
   .service-art, .offer, .photo img { transition: none; }
 }
+
+/* ---------- Herramientas ---------- */
+.tools { display: grid; gap: 120px; }
+.tool { display: grid; gap: 54px; align-items: center; }
+.tool-fan { position: relative; height: 250px; width: 100%; max-width: 420px; justify-self: center; }
+.fan-card { position: absolute; left: 50%; top: 6px; width: 150px; aspect-ratio: 3 / 4; margin-left: -75px; overflow: hidden; background: var(--lilac); transition: translate 300ms var(--ease-out), rotate 300ms var(--ease-out); }
+.fan-card img { width: 100%; height: 100%; object-fit: cover; }
+.fan-card:nth-child(1) { rotate: -9deg; translate: -82px 22px; }
+.fan-card:nth-child(2) { z-index: 1; }
+.fan-card:nth-child(3) { rotate: 9deg; translate: 82px 22px; }
+.tool-text { display: grid; gap: 18px; justify-items: start; }
+.tool-lede { font-size: 21px; font-weight: 400; max-width: 46ch; }
+.tool .meta { width: 100%; max-width: 46ch; }
+@media (hover: hover) and (pointer: fine) {
+  .tool-fan:hover .fan-card:nth-child(1) { rotate: -12deg; translate: -150px 30px; }
+  .tool-fan:hover .fan-card:nth-child(3) { rotate: 12deg; translate: 150px 30px; }
+}
+@media (min-width: 768px) {
+  .tool { grid-template-columns: 1fr 1fr; gap: 80px; }
+  .tool.flip .tool-fan { order: 2; }
+  .tool-fan { height: 440px; }
+  .fan-card { width: 230px; margin-left: -115px; }
+  .fan-card:nth-child(1) { translate: -128px 30px; }
+  .fan-card:nth-child(3) { translate: 128px 30px; }
+}
+@media (prefers-reduced-motion: reduce) { .fan-card { transition: none; } }

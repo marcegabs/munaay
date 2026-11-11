@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>munaay cósmico · Links</title>
+  <meta name="description" content="Sesiones 1:1, masterclasses, herramientas y WhatsApp de munaay cósmico.">
+  <meta property="og:title" content="munaay cósmico">
+  <meta property="og:description" content="Sesiones 1:1, masterclasses, herramientas y WhatsApp.">
+  <meta property="og:image" content="../landing/img/cielo-hero.jpg">
+  <meta name="theme-color" content="#7B6386">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #FAF1EC;
+      --cream: #FFF9F5;
+      --ink: #3E2937;
+      --ink-soft: #745A6B;
+      --coral: #C4675B;
+      --white: #FFFFFF;
+      --rule: rgba(62,41,55,.16);
+      --serif: 'Cormorant Garamond', Garamond, Georgia, serif;
+      --sans: 'Jost', 'Futura', 'Avenir Next', system-ui, sans-serif;
+      --ease-out: cubic-bezier(.23, 1, .32, 1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      min-height: 100dvh; display: grid; place-items: center;
+      padding: calc(28px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom));
+      font-family: var(--serif); font-weight: 500; color: var(--ink); line-height: 1.45;
+      background: #8E7090 url(../landing/img/cielo-hero.jpg) center / cover fixed;
+      -webkit-tap-highlight-color: transparent; -webkit-font-smoothing: antialiased;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .07; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 1.5px solid var(--ink); outline-offset: 4px; }
+
+    .card {
+      width: 100%; max-width: 440px; background: var(--paper); border: 10px solid var(--white);
+      padding: 44px 22px 30px; text-align: center;
+      box-shadow: 0 40px 80px -46px rgba(42,26,40,.7), 0 10px 24px -18px rgba(42,26,40,.35);
+    }
+    .logo { display: block; width: 180px; height: auto; margin: 0 auto; }
+    h1 { font-weight: 300; font-size: 44px; line-height: 1.04; letter-spacing: -.01em; margin-top: 26px; padding-bottom: .05em; }
+    h1 em { font-style: italic; color: var(--coral); }
+    .lede { font-style: italic; font-weight: 400; font-size: 19px; color: var(--ink-soft); margin: 10px auto 0; max-width: 30ch; }
+
+    .links { list-style: none; display: grid; gap: 10px; margin-top: 30px; text-align: left; }
+    .link {
+      display: grid; grid-template-columns: 1fr 44px; align-items: center; gap: 14px; min-height: 72px;
+      padding: 10px 10px 10px 24px; border-radius: 999px; background: var(--cream);
+      box-shadow: inset 0 0 0 1px var(--rule);
+      transition: transform 160ms var(--ease-out), background-color 200ms ease;
+    }
+    .link.primary { background: var(--ink); color: var(--paper); box-shadow: none; }
+    .link strong { display: block; font-weight: 500; font-size: 20px; line-height: 1.15; }
+    .link span span { display: block; font-style: italic; font-weight: 400; font-size: 15.5px; color: var(--ink-soft); line-height: 1.25; margin-top: 2px; }
+    .link.primary span span { color: rgba(250,241,236,.7); }
+    .go { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: rgba(62,41,55,.07); transition: transform 200ms var(--ease-out); }
+    .primary .go { background: rgba(250,241,236,.14); }
+    .link:active { transform: scale(.97); }
+    @media (hover: hover) and (pointer: fine) {
+      .link:hover .go { transform: translate(3px, -1px) scale(1.06); }
+      .link:not(.primary):hover { background: var(--white); }
+    }
+
+    .foot { margin-top: 26px; font-family: var(--sans); font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink-soft); }
+    .foot a { border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+
+    .rv { opacity: 0; translate: 0 18px; animation: rise 800ms var(--ease-out) forwards; animation-delay: var(--d, 0ms); }
+    @keyframes rise { to { opacity: 1; translate: 0 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      .rv { animation: fade 300ms ease forwards; translate: none; }
+      @keyframes fade { to { opacity: 1; } }
+      .link, .go { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="arrow-ne" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <main class="card rv">
+    <img class="logo" src="../landing/img/munaay.svg" alt="munaay cósmico" width="180" height="58">
+    <h1 class="rv" style="--d:100ms">Lo que buscas <em>ya vive en ti.</em></h1>
+    <p class="lede rv" style="--d:160ms">Sesiones 1:1, masterclasses y herramientas para tu práctica.</p>
+
+    <ul class="links">
+      <li class="rv" style="--d:240ms">
+        <a class="link primary" href="../landing/index.html#sesiones">
+          <span><strong>Sesiones 1:1</strong><span>Oráculo, numerología y registros akáshicos</span></span>
+          <span class="go" aria-hidden="true"><svg width="16" height="16"><use href="#arrow"/></svg></span>
+        </a>
+      </li>
+      <li class="rv" style="--d:300ms">
+        <a class="link" href="../landing/index.html#masterclasses">
+          <span><strong>Masterclasses y eventos</strong><span>La próxima y las anteriores</span></span>
+          <span class="go" aria-hidden="true"><svg width="16" height="16"><use href="#arrow"/></svg></span>
+        </a>
+      </li>
+      <li class="rv" style="--d:360ms">
+        <a class="link" href="../landing/herramientas.html">
+          <span><strong>Herramientas</strong><span>Crea tu Ritual y Angel Whispers</span></span>
+          <span class="go" aria-hidden="true"><svg width="16" height="16"><use href="#arrow"/></svg></span>
+        </a>
+      </li>
+      <li class="rv" style="--d:420ms">
+        <a class="link" href="https://wa.me/525534888993" target="_blank" rel="noopener">
+          <span><strong>WhatsApp</strong><span>Escríbenos al +52 55 3488 8993</span></span>
+          <span class="go" aria-hidden="true"><svg width="16" height="16"><use href="#arrow-ne"/></svg></span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="foot rv" style="--d:480ms"><a href="https://www.instagram.com/munaaycosmico" target="_blank" rel="noopener">@munaaycosmico</a></p>
+  </main>
+</body>
+</html>
