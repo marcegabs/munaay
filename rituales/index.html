@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Crea tu Ritual · Whimsy & Rituals · MUNAAY</title>
-  <meta name="description" content="Crea tu ritual en cinco partes: intención, acción lunar, color, ingrediente y gesto. Masterclass Whimsy & Rituals de MUNAAY Cósmico.">
+  <meta name="description" content="Elige tu intención y crea tu ritual paso a paso, aprendiendo qué significa cada arcángel, cada fase de la luna, cada color y cada ingrediente. Masterclass Whimsy & Rituals de MUNAAY Cósmico.">
   <meta name="theme-color" content="#EEE4D8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,16 +19,12 @@
       --rule: rgba(42,30,25,0.16);
       --rule-strong: rgba(42,30,25,0.42);
       --coral: #E06C55;
-      --coral-pale: #F6D3C8;
-      --blue: #5D8CB5;
       --blue-pale: #C8D8E6;
       --ochre: #E9B44C;
       --ochre-deep: #B9852B;
-      --sage: #8FA77E;
-      --rose: #D98C8A;
+      --warn: #A0442F;
       --goth: 'Oranienbaum', 'Bodoni 72', 'Didot', serif;
       --serif: 'EB Garamond', Garamond, 'Times New Roman', Georgia, serif;
-      --row-h: 74px;
       --ease: cubic-bezier(.2,.8,.2,1);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,24 +39,19 @@
     button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; touch-action: manipulation; -webkit-user-select: none; user-select: none; }
     .rn { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--ink-soft); margin-right: 4px; }
     .goth { font-family: var(--goth); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; line-height: 0.98; color: var(--choco); }
-    .goth small { text-transform: none; }
     .caps { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
-    em, .it { font-style: italic; }
     .soft { color: var(--ink-soft); }
     :focus-visible { outline: 1.5px solid var(--coral); outline-offset: 3px; }
-    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    [hidden] { display: none !important; }
 
     /* ---------- Page frame ---------- */
     .page { background: var(--paper); min-height: 100dvh; }
     .masthead {
-      position: sticky; top: 0; z-index: 10;
-      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      text-align: center; font-style: italic; font-size: 15px;
       padding: calc(10px + env(safe-area-inset-top)) 18px 10px;
-      background: rgba(238,228,216,0.94); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
       border-bottom: 1px solid var(--rule);
     }
-    .masthead .mid { font-style: italic; font-size: 15px; }
-    .captions { display: flex; justify-content: space-between; gap: 10px; font-style: italic; font-size: 14px; color: var(--ink); padding: 14px 0 0; }
+    .captions { display: flex; justify-content: space-between; gap: 10px; font-style: italic; font-size: 14px; padding: 14px 0 0; }
     .captions span:nth-child(2) { text-align: center; }
     .captions span:last-child { text-align: right; }
 
@@ -69,80 +60,52 @@
     @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
     .col { padding: 0 18px; }
-    .rule-top { border-top: 1px solid var(--rule); }
+    .narrow { max-width: 680px; margin: 0 auto; }
 
-    /* ---------- Intro ---------- */
-    .intro-grid { display: flex; flex-direction: column; }
-    .a-hero { order: 1; text-align: center; }
-    .a-formula { order: 2; }
-    .a-actions { order: 3; }
-    .a-catalog { order: 4; }
-    .a-saved { order: 5; }
+    /* ---------- Hero ---------- */
+    .hero { text-align: center; padding-bottom: 6px; }
+    .title { font-size: 56px; margin: 18px 0 8px; }
+    .subtitle { font-style: italic; font-size: 17px; line-height: 1.35; max-width: 40ch; margin: 0 auto; }
+    .logo { display: block; width: 150px; height: auto; margin: 14px auto 0; opacity: .92; }
 
-    .title { font-size: 56px; margin: 18px 0 8px; color: var(--choco); }
-    .subtitle { font-style: italic; font-size: 16px; line-height: 1.3; }
-    .logo { display: block; width: 150px; height: auto; margin: 12px auto 0; opacity: .92; }
-
-    /* ---------- Plate: the day's archangel, annotated like a specimen ---------- */
-    .plate-hero { display: grid; grid-template-columns: 1fr 132px 1fr; align-items: center; margin: 28px 0 0; }
-    .anno { position: relative; line-height: 1.2; }
-    .anno .k { display: block; font-style: italic; font-size: 13px; color: var(--ink-soft); }
-    .anno .v { display: block; font-size: 17px; font-weight: 500; }
-    .anno .v em { color: var(--coral); font-weight: 400; font-size: 14px; }
-    .anno.l { text-align: right; padding-right: 24px; }
-    .anno.r { text-align: left; padding-left: 24px; }
-    .anno.l::after, .anno.r::before { content: ''; position: absolute; top: 50%; width: 18px; border-top: 1px dotted var(--ink); }
-    .anno.l::after { right: 3px; }
-    .anno.r::before { left: 3px; }
-    .hero-card { position: relative; aspect-ratio: 3 / 4; }
-    .hero-card .frame {
-      position: absolute; inset: 0; overflow: hidden; background: var(--blue-pale);
-      border: 1px solid var(--rule-strong); outline: 5px solid var(--paper-hi); outline-offset: -6px;
-      box-shadow: 0 16px 30px -22px rgba(42,30,25,.55);
-      animation: appear .5s var(--ease) both;
+    /* ---------- Mode switch ---------- */
+    .modes {
+      display: grid; grid-template-columns: 1fr 1fr; position: sticky; top: 0; z-index: 5;
+      padding-top: env(safe-area-inset-top);
+      background: rgba(238,228,216,0.95); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--rule);
     }
-    @keyframes appear { from { opacity: 0; } to { opacity: 1; } }
-    .hero-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .hero-card.fan .frame:nth-child(1) { transform: rotate(-6deg) translateX(-8px) scale(.94); }
-    .hero-card.fan .frame:nth-child(3) { transform: rotate(6deg) translateX(8px) scale(.94); }
-    .plate-cap { font-style: italic; font-size: 20px; line-height: 1.25; margin-top: 18px; }
-    .plate-cap small { display: block; font-size: 14px; color: var(--ink-soft); }
+    .modes button { min-height: 52px; font-style: italic; font-size: 17px; color: var(--ink-soft); border-bottom: 2px solid transparent; }
+    .modes [aria-selected="true"] { color: var(--ink); border-color: var(--ink); }
+    .opt .go { align-self: center; font-size: 20px; color: var(--ink-soft); }
+    #intentions .opt { grid-template-columns: auto 1fr auto; }
+    #intentions .opt .nm { padding-right: 0; }
 
-    /* ---------- The five parts ---------- */
-    .a-formula h2 { font-size: 32px; padding-top: 30px; }
-    .a-formula .lede { margin-top: 4px; }
-    .parts { list-style: none; border-top: 1px solid var(--rule-strong); margin-top: 14px; }
-    .part {
-      width: 100%; min-height: 66px; display: grid; grid-template-columns: 34px 1fr auto; gap: 12px; align-items: center;
-      text-align: left; padding: 12px 6px 12px 0; border-bottom: 1px solid var(--rule); transition: background .2s;
-    }
-    .part .num { font-size: 19px; font-style: italic; text-align: center; color: var(--ink-soft); }
-    .part .nm { display: block; font-style: italic; font-size: 14px; color: var(--ink-soft); }
-    .part .val { display: block; font-size: 18px; font-weight: 500; line-height: 1.2; }
-    .part .val.rand { font-weight: 400; font-style: italic; color: var(--ink-soft); }
-    .part .vis { display: flex; align-items: center; gap: 8px; }
-    .part .vis .thumb { width: 30px; height: 40px; }
-    .part .vis .swatch { width: 26px; height: 26px; }
-    .part[aria-current="true"] { background: linear-gradient(90deg, var(--paper-hi), transparent 85%); }
-    .part[aria-current="true"] .num { color: var(--coral); }
+    /* ---------- Learn guide ---------- */
+    .jump { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 18px -18px 0; padding: 0 18px 4px; }
+    .jump::-webkit-scrollbar { display: none; }
+    .jump a { flex: 0 0 auto; min-height: 40px; display: inline-flex; align-items: center; padding: 0 14px; border: 1px solid var(--rule-strong); border-radius: 999px; font-style: italic; font-size: 15px; color: var(--ink); text-decoration: none; }
+    .section { scroll-margin-top: 64px; }
+    .section > h2 { font-size: 38px; margin-top: 34px; }
+    .lede { font-style: italic; font-size: 16.5px; margin-top: 6px; }
+    .section .learn + .learn { border-top: 0; margin-top: 0; }
+    .learn .tight { margin-top: 0; }
+    .entries { list-style: none; border-top: 1px solid var(--rule-strong); margin-top: 14px; }
+    .entry { display: grid; grid-template-columns: auto 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--rule); align-items: start; }
+    .entry .span { grid-column: 1 / -1; }
+    .entry.now { background: linear-gradient(90deg, var(--paper-hi), transparent 90%); }
+    .entry strong { display: block; font-weight: 500; font-size: 18px; line-height: 1.2; }
+    .entry .today { font-style: italic; color: var(--coral); font-size: 14px; margin-left: 6px; font-weight: 400; }
+    .entry .today.soft { color: var(--ink-soft); }
+    .entry .cap { display: block; font-style: italic; font-size: 15.5px; color: var(--ink-soft); line-height: 1.35; margin-top: 2px; }
+    .entry .cap b { font-weight: 500; font-style: normal; color: var(--ink); }
+    .entry .note { display: block; font-style: italic; font-size: 13.5px; color: var(--warn); margin-top: 3px; }
 
-    .a-actions { padding-top: 22px; }
-    .status { font-style: italic; font-size: 15px; color: var(--ink-soft); margin-bottom: 12px; text-align: center; }
-
-    /* ---------- Catalog ---------- */
-    .tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; padding: 12px 0 0; margin: 0 -18px; padding-left: 18px; padding-right: 18px; position: sticky; top: 58px; background: var(--paper); z-index: 5; border-bottom: 1px solid var(--rule); }
-    .tabs::-webkit-scrollbar { display: none; }
-    .tab { flex: 0 0 auto; min-height: 44px; padding: 0 10px 8px; font-style: italic; font-size: 16px; color: var(--ink-soft); border-bottom: 2px solid transparent; display: inline-flex; align-items: flex-end; gap: 5px; }
-    .tab .rn { font-size: 15px; margin-right: 0; }
-    .tab[aria-selected="true"] { color: var(--ink); border-color: var(--ink); }
-    .cat-head { padding: 22px 0 6px; }
-    .cat-head h2 { font-size: 36px; }
-    .cat-head h2 small { font-family: var(--serif); font-style: italic; font-size: 16px; font-weight: 400; color: var(--ink-soft); margin-left: 6px; letter-spacing: 0; }
-    .lede { font-style: italic; font-size: 16px; color: var(--ink); margin-top: 8px; max-width: 46ch; }
-    .sub-head { display: flex; justify-content: space-between; align-items: baseline; margin: 20px 0 8px; }
+    /* ---------- Lists ---------- */
+    .sub-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin: 22px 0 8px; }
     .sub-head .caps { color: var(--ink-soft); }
 
-    .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--rule); }
+    .opts { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); }
     .opt {
       position: relative; text-align: left; padding: 12px 10px 14px; min-height: 64px;
       border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: auto 1fr; column-gap: 10px; align-items: start;
@@ -151,38 +114,57 @@
     .opt:nth-child(odd) { border-right: 1px solid var(--rule); }
     .opts.single { grid-template-columns: 1fr; }
     .opts.single .opt { border-right: 0; }
-    .opt:active { background: var(--paper-hi); }
-    .opt[aria-pressed="true"] { background: var(--paper-hi); }
+    .opt:active, .opt[aria-pressed="true"] { background: var(--paper-hi); }
     .opt[aria-pressed="true"]::after {
-      content: attr(data-stamp); position: absolute; top: 8px; right: 8px;
+      content: 'elegido'; position: absolute; top: 8px; right: 8px;
       font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--coral);
       border: 1px solid var(--coral); border-radius: 999px; padding: 1px 7px; transform: rotate(-4deg); background: var(--paper);
     }
-    .opt .fig { grid-column: 1 / -1; font-style: italic; font-size: 12.5px; color: var(--ink-soft); margin-bottom: 4px; }
-    .opt .art { grid-row: span 2; }
-    .opt .nm { font-size: 18px; font-weight: 500; line-height: 1.15; padding-right: 54px; }
-    .opt .cap { font-style: italic; font-size: 14px; color: var(--ink-soft); line-height: 1.3; margin-top: 3px; }
-    .opt .cap.warn { color: #A0442F; }
-    .opt.rand .nm { font-family: var(--goth); font-weight: 400; font-size: 21px; text-transform: uppercase; color: var(--choco); }
-    .opt.dim { opacity: .5; }
-    .opt .today { font-style: italic; color: var(--coral); font-size: 14px; margin-left: 4px; font-weight: 400; }
+    .opt .nm { display: block; font-size: 18px; font-weight: 500; line-height: 1.15; padding-right: 58px; }
+    .opt .cap { display: block; font-style: italic; font-size: 14.5px; color: var(--ink-soft); line-height: 1.3; margin-top: 3px; }
+    .opt .note { display: block; font-style: italic; font-size: 13px; color: var(--warn); line-height: 1.3; margin-top: 4px; }
+    .opt .today, .opt .min { font-style: italic; color: var(--coral); font-size: 14px; margin-left: 4px; font-weight: 400; }
+    .opt .min { color: var(--ink-soft); }
 
     .thumb { display: block; width: 40px; height: 54px; overflow: hidden; border: 1px solid var(--rule-strong); outline: 3px solid var(--paper-hi); outline-offset: -4px; background: var(--blue-pale); }
-    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.9); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .swatch { display: block; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--rule-strong); box-shadow: inset 0 0 0 3px var(--paper-hi); }
-    .glyph { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; border: 1px dashed var(--rule-strong); font-family: var(--goth); font-size: 18px; color: var(--ink-soft); }
 
-    .phases { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-    .phase { text-align: center; padding: 14px 4px 12px; font-size: 14px; }
-    .phase + .phase { border-left: 1px solid var(--rule); }
-    .phase svg { display: block; margin: 0 auto 6px; }
-    .phase .it { display: block; color: var(--ink-soft); font-size: 13px; }
-    .phase.now { background: var(--paper-hi); }
-    .phase.now .it { color: var(--coral); }
-    .phase:not(.now) svg { opacity: .55; }
 
-    /* ---------- Left column ---------- */
-    .saved { padding: 26px 0 10px; }
+    /* ---------- Learn panel ---------- */
+    .learn {
+      display: grid; grid-template-columns: 112px 1fr; gap: 16px; align-items: start;
+      margin: 18px 0 0; padding: 18px 0; border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule);
+    }
+    .frame { display: block; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid var(--rule-strong); outline: 5px solid var(--paper-hi); outline-offset: -6px; background: var(--blue-pale); box-shadow: 0 16px 30px -22px rgba(42,30,25,.55); }
+    .frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .learn .kicker { font-style: italic; font-size: 14px; color: var(--ink-soft); }
+    .learn h3 { font-size: 30px; margin: 2px 0 2px; }
+    .learn .role { font-style: italic; color: var(--coral); font-size: 16px; }
+    .learn p { font-size: 16px; margin-top: 8px; }
+    .learn .k { font-style: italic; font-size: 14px; color: var(--ink-soft); margin-top: 12px; }
+    .learn ul { list-style: none; font-size: 16px; }
+    .learn li { padding-left: 14px; position: relative; }
+    .learn li::before { content: '·'; position: absolute; left: 2px; color: var(--coral); font-weight: 600; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 6px; }
+    .chip { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; }
+    .chip .swatch { width: 18px; height: 18px; box-shadow: none; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 54px; padding: 12px 18px;
+      background: var(--ink); color: var(--paper-hi); border-radius: 2px;
+      font-size: 13px; letter-spacing: .2em; text-transform: uppercase; font-weight: 500;
+      transition: background .2s, transform .1s, opacity .2s;
+    }
+    .btn:active { transform: scale(.985); }
+    .btn.line { background: transparent; color: var(--ink); border: 1px solid var(--rule-strong); }
+    .btn[disabled] { opacity: .35; pointer-events: none; }
+    .link { display: block; margin: 14px auto 0; min-height: 44px; font-style: italic; font-size: 16px; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+    .stack > * + * { margin-top: 10px; }
+
+    /* ---------- Saved ---------- */
+    .saved { padding: 30px 0 10px; }
     .saved h2 { font-size: 30px; }
     .saved-list { list-style: none; margin-top: 10px; border-top: 1px solid var(--rule); }
     .saved-list li { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rule); }
@@ -195,76 +177,21 @@
     footer { text-align: center; padding: 28px 18px 34px; }
     footer .caps { color: var(--ochre-deep); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
 
-    /* ---------- Buttons ---------- */
-    .btn {
-      display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 54px; padding: 12px 18px;
-      background: var(--ink); color: var(--paper-hi); border-radius: 2px;
-      font-size: 13px; letter-spacing: .2em; text-transform: uppercase; font-weight: 500;
-      transition: background .2s, transform .1s;
-    }
-    .btn:active { transform: scale(.985); }
-    .btn.line { background: transparent; color: var(--ink); border: 1px solid var(--rule-strong); }
-    .btn[disabled] { opacity: .45; pointer-events: none; }
-    .link { display: block; margin: 14px auto 0; min-height: 44px; font-style: italic; font-size: 16px; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
-    .stack > * + * { margin-top: 10px; }
-    .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-    /* ---------- Slot screen ---------- */
-    .narrow { max-width: 560px; margin: 0 auto; }
-    .slot-head { text-align: center; padding: 6px 0 14px; }
-    .slot-head h2 { font-size: 46px; margin: 14px 0 6px; }
-    .reels { border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule-strong); }
-    .row {
-      display: grid; grid-template-columns: 40px 1fr 54px; grid-template-rows: auto var(--row-h); column-gap: 8px; align-items: center;
-      padding: 10px 0 4px; transition: background .25s;
-    }
-    .row + .row { border-top: 1px solid var(--rule); }
-    .row.locked { background: linear-gradient(90deg, transparent, var(--paper-hi) 20%, var(--paper-hi) 80%, transparent); }
-    .row .num { grid-row: 1 / span 2; font-size: 20px; font-style: italic; text-align: center; color: var(--ink-soft); }
-    .row-label { grid-column: 2; font-style: italic; font-size: 14px; color: var(--ink-soft); }
-    .row.locked .row-label::after { content: attr(data-kept); color: var(--coral); margin-left: 6px; }
-    .toggle { grid-column: 3; grid-row: 1 / span 2; justify-self: center; width: 52px; height: 60px; display: grid; place-items: center; }
-    .toggle .pill { width: 22px; height: 40px; border-radius: 999px; border: 1px solid var(--ink); position: relative; background: var(--paper-hi); transition: background .25s; }
-    .toggle .pill::after { content: ''; position: absolute; left: 50%; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; background: var(--ink); top: 23px; transition: top .3s var(--ease), background .3s; }
-    .toggle[aria-pressed="true"] .pill { background: var(--coral-pale); }
-    .toggle[aria-pressed="true"] .pill::after { top: 3px; background: var(--coral); }
-    .window {
-      grid-column: 2; grid-row: 2; height: var(--row-h); overflow: hidden; position: relative;
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 86%, transparent 100%);
-              mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 86%, transparent 100%);
-    }
-    .strip { will-change: transform; }
-    .item { height: var(--row-h); display: flex; align-items: center; gap: 12px; overflow: hidden; }
-    .item .txt { min-width: 0; }
-    .item .main { font-size: 20px; font-weight: 500; line-height: 1.12; }
-    .item .sub { font-style: italic; font-size: 14px; color: var(--ink-soft); line-height: 1.25; margin-top: 2px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .item .sub.warn { color: #A0442F; }
-    .item .today { font-style: italic; color: var(--coral); font-size: 15px; font-weight: 400; margin-left: 4px; }
-    .item .thumb { width: 36px; height: 48px; }
-    .slot-hint { text-align: center; font-style: italic; font-size: 15px; color: var(--ink-soft); margin: 14px 0 6px; }
-    .slot-actions { margin: 20px 0 10px; }
-
-    /* ---------- Ritual plate ---------- */
+    /* ---------- Ritual plan ---------- */
     .plate { padding: 0 0 8px; }
-    .plate .captions { padding-top: 14px; }
     .plate-art { width: 150px; margin: 22px auto 6px; text-align: center; }
-    .plate-art .frame { display: block; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid var(--rule-strong); outline: 5px solid var(--paper-hi); outline-offset: -6px; background: var(--blue-pale); }
-    .plate-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .plate-art figcaption { font-style: italic; font-size: 14px; color: var(--ink-soft); margin-top: 8px; }
     .plate h2 { text-align: center; font-size: 44px; margin: 14px 0 8px; }
     .plate .meta { text-align: center; font-style: italic; font-size: 16px; color: var(--ink-soft); }
-    .legend { display: grid; grid-template-columns: 1fr 1fr; margin: 22px 0 6px; border-top: 1px solid var(--rule-strong); }
-    .legend div { padding: 10px 8px 10px 0; border-bottom: 1px solid var(--rule); }
-    .legend div:nth-child(odd) { border-right: 1px solid var(--rule); }
-    .legend div:nth-child(even) { padding-left: 12px; }
-    .legend div:last-child { grid-column: 1 / -1; border-right: 0; }
-    .legend dt { font-style: italic; font-size: 13px; color: var(--ink-soft); }
-
-    .legend dd { font-size: 17px; font-weight: 500; line-height: 1.2; }
-    .plate h3 { font-family: var(--goth); font-weight: 400; text-transform: uppercase; color: var(--choco); font-size: 28px; margin: 24px 0 10px; }
+    .plate h3 { font-family: var(--goth); font-weight: 400; text-transform: uppercase; color: var(--choco); font-size: 28px; margin: 26px 0 10px; }
+    .legend { margin: 22px 0 6px; border-top: 1px solid var(--rule-strong); }
+    .legend div { padding: 11px 0 12px; border-bottom: 1px solid var(--rule); }
+    .legend dt { font-style: italic; font-size: 14px; color: var(--ink-soft); }
+    .legend dd { font-size: 18px; font-weight: 500; line-height: 1.25; }
+    .legend .why { display: block; font-weight: 400; font-style: italic; font-size: 15.5px; color: var(--ink-soft); line-height: 1.35; margin-top: 2px; }
     .steps { list-style: none; counter-reset: s; }
     .steps li { counter-increment: s; position: relative; padding: 0 0 12px 40px; font-size: 17px; }
-    .steps li::before { content: counter(s, lower-roman) "."; position: absolute; left: 0; top: 0; font-style: italic; color: var(--coral); font-size: 17px; }
+    .steps li::before { content: counter(s, lower-roman) "."; position: absolute; left: 0; top: 0; font-style: italic; color: var(--coral); }
     .prompt { font-style: italic; font-size: 21px; line-height: 1.3; border-left: 2px solid var(--ochre); padding: 4px 0 4px 16px; }
     .gratitude { text-align: center; font-style: italic; font-size: 19px; margin: 26px 0 0; }
     .footnotes { margin-top: 26px; padding-top: 10px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--ink-soft); }
@@ -281,24 +208,19 @@
     }
     .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
-    /* ---------- Desktop: framed monograph with three columns ---------- */
+    @media (max-width: 420px) {
+      .opts:not(.single) { grid-template-columns: 1fr; }
+      .opts:not(.single) .opt { border-right: 0; }
+      .learn { grid-template-columns: 88px 1fr; gap: 14px; }
+    }
+
+    /* ---------- Desktop: framed monograph ---------- */
     @media (min-width: 980px) {
       body { background: linear-gradient(165deg, #F8CACC 0%, #F5C4C8 52%, #C9B5C4 78%, #6FA3B0 100%) fixed; padding: 48px 32px; }
-      .page { max-width: 1240px; margin: 0 auto; border: 7px solid #fff; border-radius: 12px; min-height: auto; box-shadow: 0 30px 60px -30px rgba(42,30,25,.45); overflow: clip; }
-      .masthead { position: static; background: transparent; }
-      .intro-grid {
-        display: grid; grid-template-columns: 1fr 1.1fr 1.1fr; align-items: start;
-        grid-template-areas: "formula hero catalog" "saved actions catalog";
-      }
-      .intro-grid > .col { padding: 0 26px 30px; }
-      .a-formula { grid-area: formula; } .a-hero { grid-area: hero; } .a-catalog { grid-area: catalog; border-left: 1px solid var(--rule); align-self: stretch; }
-      .a-saved { grid-area: saved; } .a-actions { grid-area: actions; }
-      .a-formula, .a-saved { border-right: 1px solid var(--rule); align-self: stretch; }
-      .a-formula h2 { padding-top: 26px; }
-      .tabs { position: static; margin: 0; padding: 14px 0 0; }
-      .opts { max-height: 640px; overflow-y: auto; }
-      .title { font-size: 60px; }
+      .page { max-width: 860px; margin: 0 auto; border: 7px solid #fff; border-radius: 12px; min-height: auto; box-shadow: 0 30px 60px -30px rgba(42,30,25,.45); overflow: clip; }
+      .title { font-size: 64px; }
       .narrow { padding-bottom: 30px; }
+      .learn { grid-template-columns: 150px 1fr; gap: 22px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
@@ -307,89 +229,61 @@
 </head>
 <body>
 <div class="page">
-  <header class="masthead">
-    <span></span>
-    <span class="mid">Whimsy &amp; Rituals</span>
-    <span></span>
-  </header>
+  <header class="masthead">Whimsy &amp; Rituals</header>
+
+  <nav class="modes" role="tablist" aria-label="Secciones">
+    <button type="button" role="tab" data-mode="create" aria-selected="true">Crear mi ritual</button>
+    <button type="button" role="tab" data-mode="learn" aria-selected="false">Aprende</button>
+  </nav>
 
   <main>
-    <!-- ============ Screen 1: plate, parts and catalog ============ -->
-    <section id="screen-intro" class="screen active" aria-labelledby="intro-title">
-      <div class="intro-grid">
-        <div class="col a-hero">
-          <div class="captions"><span>Masterclass</span><span id="cap-date"></span><span id="cap-moon"></span></div>
-          <h1 class="title goth" id="intro-title">Crea tu Ritual</h1>
-          <p class="subtitle">Un ritual en cinco partes.<br>Elige las que quieras y deja el resto al azar.</p>
-          <img class="logo" src="munaay.svg" alt="MUNAAY Cósmico" width="150" height="49">
-          <div class="plate-hero" id="plate-hero"></div>
-          <p class="plate-cap" id="plate-cap"></p>
-        </div>
-
-        <div class="col a-formula">
-          <h2 class="goth">Las cinco partes</h2>
-          <p class="lede">Toca una parte para ver sus opciones.</p>
-          <ol class="parts" id="parts"></ol>
-        </div>
-
-        <div class="col a-actions">
-          <p class="status" id="status"></p>
-          <div class="stack">
-            <button type="button" class="btn" id="btn-go">Girar con mis elecciones</button>
-            <button type="button" class="btn line" id="btn-random">Todo al azar</button>
-            <button type="button" class="link" id="btn-reset">Reiniciar elecciones</button>
-          </div>
-        </div>
-
-        <div class="col a-catalog">
-          <nav class="tabs" id="tabs" role="tablist"></nav>
-          <div id="catalog" role="tabpanel"></div>
-        </div>
-
-        <div class="col a-saved">
-          <div class="saved">
-            <h2 class="goth">Mis rituales</h2>
-            <ul class="saved-list" id="saved-list"></ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ Screen 2: slot machine ============ -->
-    <section id="screen-slots" class="screen" aria-labelledby="slots-title">
+    <!-- ============ Create: choose an intention ============ -->
+    <section id="screen-create" class="screen active" aria-labelledby="intro-title">
       <div class="col narrow">
-        <div class="slot-head">
+        <div class="hero">
           <div class="captions"><span>Masterclass</span><span class="cap-date"></span><span class="cap-moon"></span></div>
-          <h2 class="goth" id="slots-title" data-i18n="slotsTitle"></h2>
-          <p class="subtitle" data-i18n="slotsSub"></p>
+          <h1 class="title goth" id="intro-title">Crea tu Ritual</h1>
+          <p class="subtitle">Elige tu intención y recibe un ritual sencillo para hoy, con la luna de hoy.</p>
+          <img class="logo" src="munaay.svg" alt="MUNAAY Cósmico" width="150" height="49">
         </div>
-        <div class="reels" id="rows" aria-live="polite"></div>
-        <div class="slot-actions stack">
-          <div class="btn-row">
-            <button type="button" class="btn line" id="btn-spin">Girar</button>
-            <button type="button" class="btn line" id="btn-spin-all">Girar todo</button>
-          </div>
-          <button type="button" class="btn" id="btn-create">Crear mi ritual</button>
-          <button type="button" class="link" id="btn-adjust">Volver a mis elecciones</button>
+        <div class="sub-head"><span class="caps">Elige tu intención</span></div>
+        <div class="opts single" id="intentions"></div>
+
+        <div class="saved">
+          <h2 class="goth">Mis rituales</h2>
+          <ul class="saved-list" id="saved-list"></ul>
         </div>
       </div>
     </section>
 
-    <!-- ============ Screen 3: ritual plate ============ -->
-    <section id="screen-card" class="screen" aria-label="Ritual">
+    <!-- ============ Learn: reference guide ============ -->
+    <section id="screen-learn" class="screen" aria-labelledby="learn-title">
+      <div class="col narrow">
+        <div class="hero">
+          <h1 class="title goth" id="learn-title">Aprende</h1>
+          <p class="subtitle">Una guía para conocer los elementos de tus rituales: qué significa cada uno y para qué sirve.</p>
+        </div>
+        <nav class="jump" id="jump" aria-label="Temas">
+          <a href="#sec-arch">Arcángeles</a><a href="#sec-color">Colores</a><a href="#sec-moon">Luna</a><a href="#sec-ing">Ingredientes</a><a href="#sec-gest">Gestos</a>
+        </nav>
+        <div id="learn-body"></div>
+      </div>
+    </section>
+
+    <!-- ============ Ritual plan ============ -->
+    <section id="screen-card" class="screen" aria-label="Tu plan de ritual">
       <div class="col narrow">
         <article class="plate" id="ritual"></article>
         <div class="card-actions stack">
-          <button type="button" class="btn" id="btn-save" data-i18n="save"></button>
-          <button type="button" class="btn line" id="btn-download" data-i18n="download"></button>
-          <button type="button" class="btn line" id="btn-again" data-i18n="again"></button>
-          <button type="button" class="link" id="btn-home" data-i18n="home"></button>
+          <button type="button" class="btn" id="btn-save">Guardar en mi lista</button>
+          <button type="button" class="btn line" id="btn-download">Descargar como imagen</button>
+          <button type="button" class="link" id="btn-other">Elegir otra intención</button>
         </div>
       </div>
     </section>
   </main>
 
-  <footer><span class="caps" data-i18n="footer"></span></footer>
+  <footer><span class="caps">Whimsy &amp; Rituals · MUNAAY Cósmico</span></footer>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -397,68 +291,72 @@
   (function () {
     'use strict';
 
-    /* ---------------- i18n: UI ---------------- */
+    /* ---------------- UI text ---------------- */
     const UI = {
       es: {
-        annoDay: 'Día', annoArch: 'Arcángel', fanDay: 'al azar', fanArch: 'al girar',
-        fanCap: 'El día y su arcángel saldrán al girar', dayIntention: 'Intención del día',
-        options: 'opciones',
-        subtitle1: 'Un ritual en cinco partes',
-        subtitle2: 'explora · fija · gira',
-        plateNo: 'lám.',
-        random: 'Al azar', randomCap: 'Deja que la máquina elija por ti.',
-        rand: 'azar', pinnedStamp: 'fijado', onTable: 'en mesa',
-        status: '{n} de 5 partes fijadas · el resto, al azar',
-        statusNone: 'Ninguna parte fijada · todo al azar',
-        statusAll: 'Las 5 partes fijadas',
-        allRandom: 'Todo al azar', reset: 'Reiniciar', spin: 'Girar', spinAll: 'Girar todo', adjust: 'Volver',
-        indexTitle: 'Índice',
-        ingCount: '{n} en tu mesa', ingAll: 'todos',
-        needsCandle: 'Añade la vela a tu mesa.',
-        phasesTitle: 'Las cuatro fases', actionsTitle: 'Acciones de esta luna', colorsFor: 'Colores para «{i}»', colorsAll: 'Todos los colores', choose: 'Elige',
-        tableTitle: 'Lo que tienes a la mano',
-        lunarDay: 'Día lunar {n}',
-        dayShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
-        savedTitle: 'Mis rituales', savedEmpty: 'Aún no has guardado rituales.',
-        view: 'Ver', del: 'Borrar',
-        slotsTitle: 'Tu Ritual', slotsSub: 'usa el interruptor para conservar una parte y vuelve a girar el resto',
-        create: 'Crear mi ritual',
+        today: 'hoy', noArch: 'sin arcángel', archangel: 'Arcángel {a}', minutes: '{n} min', lunarDay: 'Día lunar {n}',
         rows: { intention: 'Intención', moon: 'Acción lunar', color: 'Color de vela o flor', ingredient: 'Ingrediente', gesture: 'Gesto' },
-        kept: '· conservado',
-        lock: 'Conservar {r}', unlock: 'Soltar {r}',
-        today: 'hoy', noArch: 'sin arcángel', archangel: 'Arcángel {a}', minutes: '{n} min',
-        stepsTitle: 'Pasos', promptTitle: 'Para escribir', closingTitle: 'Cierre', safetyTitle: 'Cuidados',
-        save: 'Guardar en mi lista', download: 'Descargar como imagen', again: 'Girar de nuevo', home: 'Volver al inicio',
+        invoke: 'Invócalo cuando…', itsDay: 'Su día', itsColor: 'Su color', goodFor: 'Para:',
+        secArch: 'Los arcángeles', ledeArch: 'Cada día de la semana tiene una intención y un arcángel que la acompaña.',
+        secColor: 'Los colores', ledeColor: 'El color de la vela o de la flor es un lenguaje: cada uno tiene un significado y, muchas veces, un arcángel.',
+        secMoon: 'Las fases de la luna', ledeMoon: 'La luna cambia de forma cada noche y, con ella, el tipo de trabajo que favorece. Tu ritual siempre usa la luna de hoy.',
+        secIng: 'Los ingredientes', ledeIng: 'Los ingredientes son símbolos: se colocan, se sostienen o se huelen. Ninguno se ingiere.',
+        secGest: 'Los gestos', ledeGest: 'El gesto es el momento en que la intención pasa al cuerpo. Todos son sencillos y marcan la duración del ritual.',
+        savedEmpty: 'Aún no has guardado rituales.', view: 'Ver', del: 'Borrar',
+        stepsTitle: 'Pasos', promptTitle: 'Para escribir', safetyTitle: 'Cuidados', plateNo: 'lám.',
         saved: 'Ritual guardado en tu lista', alreadySaved: 'Este ritual ya está en tu lista',
         saveError: 'No se pudo guardar en este navegador.', downloadError: 'No se pudo crear la imagen.',
-        allLocked: 'Todas las partes están conservadas. Suelta alguna o usa «Girar todo».',
-        swapCandle: 'Sin vela en tu mesa: cambiamos el gesto de la vela.',
-        swapIngredient: 'Ese ingrediente ya no está en tu mesa; elegimos otro.',
         withNoIngredient: 'Sin ingredientes',
-        footer: 'Whimsy & Rituals · MUNAAY Cósmico',
+        whyIntention: 'Te acompaña el arcángel {a}, {r}.',
+        whyColor: 'Representa {m}.',
         stepColor: 'Si tienes una vela o una flor de color {c}, colócala cerca de ti. En esta tradición ese color se asocia con {m}.',
         stepIngredient: '{u}. Deja que te acompañe mientras piensas en {f}.',
-        stepClose: 'Quédate un momento en silencio y, cuando quieras, vuelve con calma a tu día.',
-        cats: {
-          intention: { name: 'Intención', desc: 'Cada día de la semana guarda una intención y un arcángel que la acompaña. Hoy viene fijado; elige otro día o déjalo al azar.' },
-          moon: { name: 'Luna', desc: 'La luna no se elige: es la de hoy, calculada en vivo. Cada fase invita a acciones distintas. Fija una o deja que la máquina elija.' },
-          color: { name: 'Color de vela o flor', desc: 'El color de la vela o de la flor que acompaña tu ritual. Se filtra según la intención y cada uno lleva su significado y, a veces, su arcángel.' },
-          ingredient: { name: 'Ingrediente', desc: 'Marca lo que tienes a la mano: la máquina solo usará eso. Si no marcas nada, usará todos. Ningún paso consiste en ingerir algo.' },
-          gesture: { name: 'Gesto', desc: 'Un gesto sencillo, sin materiales especiales. Marca la duración del ritual, de 2 a 10 minutos.' }
-        }
+        stepClose: 'Quédate un momento en silencio y, cuando quieras, vuelve con calma a tu día.'
       }
     };
 
     /* ---------------- Data ---------------- */
+    // Archangel lessons follow ANGELS-REFERENCE.md.
     const ARCH = {
-      Jofiel: { es: 'Jofiel', en: 'Jophiel', img: 'jofiel' }, Chamuel: { es: 'Chamuel', en: 'Chamuel', img: 'chamuel' },
-      Gabriel: { es: 'Gabriel', en: 'Gabriel', img: 'gabriel' }, Rafael: { es: 'Rafael', en: 'Raphael', img: 'rafael' },
-      Uriel: { es: 'Uriel', en: 'Uriel', img: 'uriel' }, Zadquiel: { es: 'Zadquiel', en: 'Zadkiel', img: 'zadquiel' },
-      Miguel: { es: 'Miguel', en: 'Michael', img: 'miguel' }, Sandalfon: { es: 'Sandalfón', en: 'Sandalphon', img: 'sandalfon' },
-      Metatron: { es: 'Metatrón', en: 'Metatron', img: 'metatron' }
+      Miguel: { es: 'Miguel', en: 'Michael', img: 'miguel',
+        role: { es: 'protector divino' },
+        desc: { es: 'Te guía hacia el coraje y la valentía. Ilumina tu camino, retira obstáculos y te protege de energías negativas.' },
+        when: { es: ['necesitas protección', 'enfrentas miedo o incertidumbre', 'buscas claridad en una decisión importante'] } },
+      Jofiel: { es: 'Jofiel', en: 'Jophiel', img: 'jofiel',
+        role: { es: 'portador de luz' },
+        desc: { es: 'Ilumina tu camino y despierta tu potencial dormido. Te ayuda a ver la belleza en todo, también en ti.' },
+        when: { es: ['buscas renovarte', 'empiezas una etapa nueva', 'quieres volver a ver la belleza'] } },
+      Chamuel: { es: 'Chamuel', en: 'Chamuel', img: 'chamuel',
+        role: { es: 'mensajero del corazón' },
+        desc: { es: 'Abre tu corazón a la compasión y al amor incondicional. Te ayuda a sanar relaciones y a encontrar paz emocional.' },
+        when: { es: ['quieres sanar una relación', 'sientes desconexión emocional', 'quieres fortalecer tus vínculos'] } },
+      Gabriel: { es: 'Gabriel', en: 'Gabriel', img: 'gabriel',
+        role: { es: 'mensajero celestial' },
+        desc: { es: 'Potencia tu voz y tu expresión. Te inspira a comunicar con claridad, creatividad y propósito.' },
+        when: { es: ['necesitas comunicarte mejor', 'quieres expresar tu verdad', 'buscas inspiración creativa'] } },
+      Rafael: { es: 'Rafael', en: 'Raphael', img: 'rafael',
+        role: { es: 'sanador divino' },
+        desc: { es: 'Lleva energía de sanación a cuerpo, mente y espíritu, y te acompaña en procesos de renovación y bienestar.' },
+        when: { es: ['buscas sanación física o emocional', 'necesitas renovarte', 'viajas o buscas algo'] } },
+      Uriel: { es: 'Uriel', en: 'Uriel', img: 'uriel',
+        role: { es: 'guardián de la sabiduría' },
+        desc: { es: 'Trae serenidad a tu mente y disipa la confusión. Es el arcángel de la alquimia: transforma lo difícil en sabiduría.' },
+        when: { es: ['sientes confusión', 'necesitas decidir con sabiduría', 'buscas paz mental'] } },
+      Zadquiel: { es: 'Zadquiel', en: 'Zadkiel', img: 'zadquiel',
+        role: { es: 'agente del cambio' },
+        desc: { es: 'Facilita los cambios profundos y te acompaña en las transiciones hacia tu mejor versión. Es el alquimista de la transformación.' },
+        when: { es: ['enfrentas grandes cambios', 'necesitas soltar lo viejo', 'buscas liberación'] } },
+      Sandalfon: { es: 'Sandalfón', en: 'Sandalphon', img: 'sandalfon',
+        role: { es: 'guardián de la naturaleza' },
+        desc: { es: 'Te conecta con la energía de la tierra y te ancla mientras creces, en equilibrio entre cielo y tierra.' },
+        when: { es: ['te sientes sin raíz', 'necesitas anclarte en el presente', 'buscas armonía'] } },
+      Metatron: { es: 'Metatrón', en: 'Metatron', img: 'metatron',
+        role: { es: 'escriba celestial' },
+        desc: { es: 'Testigo de tu alma, te guía hacia la sabiduría ancestral y el cierre de ciclos.' },
+        when: { es: ['necesitas cerrar un ciclo', 'buscas equilibrio', 'quieres sentir plenitud'] } }
     };
     const archImg = a => a ? `arcangeles/${ARCH[a].img}.jpg` : null;
-    const thumbHTML = (a, cls = 'thumb') => a ? `<span class="${cls}"><img src="${archImg(a)}" alt="" loading="lazy" decoding="async"></span>` : '';
+    const thumbHTML = a => a ? `<span class="thumb"><img src="${archImg(a)}" alt="" loading="lazy" decoding="async"></span>` : '';
     const WEEK = [1, 2, 3, 4, 5, 6, 0]; // Monday → Sunday
 
     const DAYS = {
@@ -525,6 +423,12 @@
       llena: { es: 'Luna llena', en: 'Full moon' },
       menguante: { es: 'Luna menguante', en: 'Waning moon' }
     };
+    const PHASE_LESSON = {
+      nueva: { es: 'La luna no se ve: es un comienzo silencioso. Tiempo de mirar hacia dentro y sembrar.' },
+      creciente: { es: 'La luz crece cada noche. Tiempo de impulsar lo que empezaste y decidir.' },
+      llena: { es: 'La luna está completa. Tiempo de celebrar y agradecer lo logrado.' },
+      menguante: { es: 'La luz disminuye. Tiempo de soltar, limpiar y cerrar.' }
+    };
 
     const MOON_ACTIONS = {
       nueva: [
@@ -581,48 +485,66 @@
 
     // Every "use" line is non-ingestive by design: placing, holding, smelling, looking.
     const INGREDIENTS = [
-      { id: 'rosas', name: { es: 'Rosas', en: 'Roses' }, safety: ['general'], use: { es: 'Coloca unos pétalos de rosa frente a ti', en: 'Place a few rose petals in front of you' } },
-      { id: 'canela', name: { es: 'Canela', en: 'Cinnamon' }, safety: ['general'], use: { es: 'Sostén una rama de canela y percibe su aroma', en: 'Hold a cinnamon stick and notice its scent' } },
-      { id: 'miel', name: { es: 'Miel', en: 'Honey' }, safety: ['general'], use: { es: 'Coloca un poco de miel en un platito, como símbolo de dulzura', en: 'Place a little honey on a small dish as a symbol of sweetness' } },
-      { id: 'jazmin', name: { es: 'Jazmín', en: 'Jasmine' }, safety: ['general'], use: { es: 'Acerca una flor de jazmín y percibe su aroma', en: 'Bring a jasmine flower close and notice its scent' } },
-      { id: 'vainilla', name: { es: 'Vainilla', en: 'Vanilla' }, safety: ['general'], use: { es: 'Ten cerca una vaina de vainilla y percibe su aroma', en: 'Keep a vanilla pod nearby and notice its scent' } },
-      { id: 'albahaca', name: { es: 'Albahaca', en: 'Basil' }, safety: ['general'], use: { es: 'Coloca unas hojas de albahaca a tu lado', en: 'Place a few basil leaves beside you' } },
-      { id: 'laurel', name: { es: 'Laurel', en: 'Bay leaf' }, safety: ['general'], use: { es: 'Sostén una hoja de laurel entre tus manos', en: 'Hold a bay leaf between your hands' } },
-      { id: 'clavo', name: { es: 'Clavo de olor', en: 'Clove' }, safety: ['aroma'], use: { es: 'Coloca unos clavos de olor en un cuenco, solo por su aroma', en: 'Place a few cloves in a small bowl, just for their scent' } },
-      { id: 'semillas', name: { es: 'Semillas', en: 'Seeds' }, safety: ['general'], use: { es: 'Toma un puñado de semillas en la palma de tu mano', en: 'Hold a handful of seeds in your palm' } },
-      { id: 'romero', name: { es: 'Romero', en: 'Rosemary' }, safety: ['general'], use: { es: 'Sostén una ramita de romero y percibe su aroma', en: 'Hold a sprig of rosemary and notice its scent' } },
-      { id: 'lavanda', name: { es: 'Lavanda', en: 'Lavender' }, safety: ['general'], use: { es: 'Coloca un poco de lavanda cerca de ti', en: 'Place a little lavender near you' } },
-      { id: 'manzanilla', name: { es: 'Manzanilla', en: 'Chamomile' }, safety: ['general'], use: { es: 'Coloca unas flores secas de manzanilla en un cuenco', en: 'Place a few dried chamomile flowers in a bowl' } },
-      { id: 'sal', name: { es: 'Sal', en: 'Salt' }, safety: ['general'], use: { es: 'Coloca un pequeño cuenco con sal frente a ti', en: 'Place a small bowl of salt in front of you' } },
-      { id: 'incienso', name: { es: 'Incienso', en: 'Incense' }, safety: ['ventilar', 'brasa'], flame: true, use: { es: 'Si lo deseas, enciende el incienso sobre un soporte estable, en un espacio ventilado', en: 'If you like, light the incense on a stable holder in a ventilated space' } },
-      { id: 'mirra', name: { es: 'Mirra', en: 'Myrrh' }, safety: ['ventilar', 'brasa'], flame: true, use: { es: 'Si lo deseas, enciende la mirra sobre un soporte seguro, en un espacio ventilado', en: 'If you like, light the myrrh on a safe holder in a ventilated space' } },
-      { id: 'menta', name: { es: 'Menta', en: 'Mint' }, safety: ['aroma'], use: { es: 'Acerca unas hojas de menta y percibe su aroma', en: 'Bring a few mint leaves close and notice their scent' } },
-      { id: 'sandalo', name: { es: 'Sándalo', en: 'Sandalwood' }, safety: ['aroma'], use: { es: 'Ten cerca un trocito de sándalo, solo por su aroma', en: 'Keep a piece of sandalwood nearby, just for its scent' } },
-      { id: 'ruda', name: { es: 'Ruda', en: 'Rue' }, safety: ['ruda'], use: { es: 'Coloca una ramita de ruda en un vaso con agua, tocándola lo menos posible', en: 'Place a sprig of rue in a glass of water, touching it as little as possible' } }
+      { id: 'rosas', name: { es: 'Rosas', en: 'Roses' }, m: { es: 'Amor, ternura y belleza.' }, safety: ['general'], use: { es: 'Coloca unos pétalos de rosa frente a ti', en: 'Place a few rose petals in front of you' } },
+      { id: 'canela', name: { es: 'Canela', en: 'Cinnamon' }, m: { es: 'Prosperidad, calor y energía.' }, safety: ['general'], use: { es: 'Sostén una rama de canela y percibe su aroma', en: 'Hold a cinnamon stick and notice its scent' } },
+      { id: 'miel', name: { es: 'Miel', en: 'Honey' }, m: { es: 'Dulzura y armonía en los vínculos.' }, safety: ['general'], use: { es: 'Coloca un poco de miel en un platito, como símbolo de dulzura', en: 'Place a little honey on a small dish as a symbol of sweetness' } },
+      { id: 'jazmin', name: { es: 'Jazmín', en: 'Jasmine' }, m: { es: 'Amor, intuición y sueños.' }, safety: ['general'], use: { es: 'Acerca una flor de jazmín y percibe su aroma', en: 'Bring a jasmine flower close and notice its scent' } },
+      { id: 'vainilla', name: { es: 'Vainilla', en: 'Vanilla' }, m: { es: 'Calma, dulzura y atracción.' }, safety: ['general'], use: { es: 'Ten cerca una vaina de vainilla y percibe su aroma', en: 'Keep a vanilla pod nearby and notice its scent' } },
+      { id: 'albahaca', name: { es: 'Albahaca', en: 'Basil' }, m: { es: 'Protección y prosperidad del hogar.' }, safety: ['general'], use: { es: 'Coloca unas hojas de albahaca a tu lado', en: 'Place a few basil leaves beside you' } },
+      { id: 'laurel', name: { es: 'Laurel', en: 'Bay leaf' }, m: { es: 'Éxito, victoria y deseos cumplidos.' }, safety: ['general'], use: { es: 'Sostén una hoja de laurel entre tus manos', en: 'Hold a bay leaf between your hands' } },
+      { id: 'clavo', name: { es: 'Clavo de olor', en: 'Clove' }, m: { es: 'Protección y atraer lo positivo.' }, safety: ['aroma'], use: { es: 'Coloca unos clavos de olor en un cuenco, solo por su aroma', en: 'Place a few cloves in a small bowl, just for their scent' } },
+      { id: 'semillas', name: { es: 'Semillas', en: 'Seeds' }, m: { es: 'Nuevos comienzos y crecimiento.' }, safety: ['general'], use: { es: 'Toma un puñado de semillas en la palma de tu mano', en: 'Hold a handful of seeds in your palm' } },
+      { id: 'romero', name: { es: 'Romero', en: 'Rosemary' }, m: { es: 'Limpieza, claridad mental y memoria.' }, safety: ['general'], use: { es: 'Sostén una ramita de romero y percibe su aroma', en: 'Hold a sprig of rosemary and notice its scent' } },
+      { id: 'lavanda', name: { es: 'Lavanda', en: 'Lavender' }, m: { es: 'Calma, paz y descanso.' }, safety: ['general'], use: { es: 'Coloca un poco de lavanda cerca de ti', en: 'Place a little lavender near you' } },
+      { id: 'manzanilla', name: { es: 'Manzanilla', en: 'Chamomile' }, m: { es: 'Serenidad y buena suerte.' }, safety: ['general'], use: { es: 'Coloca unas flores secas de manzanilla en un cuenco', en: 'Place a few dried chamomile flowers in a bowl' } },
+      { id: 'sal', name: { es: 'Sal', en: 'Salt' }, m: { es: 'Limpieza y protección.' }, safety: ['general'], use: { es: 'Coloca un pequeño cuenco con sal frente a ti', en: 'Place a small bowl of salt in front of you' } },
+      { id: 'incienso', name: { es: 'Incienso', en: 'Incense' }, m: { es: 'Purificar el espacio y elevar la intención.' }, safety: ['ventilar', 'brasa'], use: { es: 'Si lo deseas, enciende el incienso sobre un soporte estable, en un espacio ventilado', en: 'If you like, light the incense on a stable holder in a ventilated space' } },
+      { id: 'mirra', name: { es: 'Mirra', en: 'Myrrh' }, m: { es: 'Limpieza profunda y espiritualidad.' }, safety: ['ventilar', 'brasa'], use: { es: 'Si lo deseas, enciende la mirra sobre un soporte seguro, en un espacio ventilado', en: 'If you like, light the myrrh on a safe holder in a ventilated space' } },
+      { id: 'menta', name: { es: 'Menta', en: 'Mint' }, m: { es: 'Frescura, claridad y renovación.' }, safety: ['aroma'], use: { es: 'Acerca unas hojas de menta y percibe su aroma', en: 'Bring a few mint leaves close and notice their scent' } },
+      { id: 'sandalo', name: { es: 'Sándalo', en: 'Sandalwood' }, m: { es: 'Meditación, calma y presencia.' }, safety: ['aroma'], use: { es: 'Ten cerca un trocito de sándalo, solo por su aroma', en: 'Keep a piece of sandalwood nearby, just for its scent' } },
+      { id: 'ruda', name: { es: 'Ruda', en: 'Rue' }, m: { es: 'Protección y limpieza de energías.' }, safety: ['ruda'], use: { es: 'Coloca una ramita de ruda en un vaso con agua, tocándola lo menos posible', en: 'Place a sprig of rue in a glass of water, touching it as little as possible' } }
     ];
-    const CANDLE_CHIP = { id: 'vela', name: { es: 'Vela', en: 'Candle' }, safety: [], use: null };
-    const NONE_INGREDIENT = { id: 'ninguno', name: { es: 'Ninguno a la mano', en: 'Nothing at hand' }, safety: [], use: null };
+    const NONE_INGREDIENT = { id: 'ninguno', name: { es: 'Ninguno a la mano', en: 'Nothing at hand' }, m: { es: 'No hace falta nada más: tu intención es suficiente.' }, safety: [], use: null };
     const ING_BY_ID = Object.fromEntries([...INGREDIENTS, NONE_INGREDIENT].map(i => [i.id, i]));
 
     const GESTURES = [
       { id: 'escribir', min: 6, name: { es: 'Escribir una intención en papel', en: 'Write an intention on paper' },
+        why: { es: 'Escribir le da forma concreta a lo que deseas: deja de ser solo un pensamiento.' },
         step: { es: 'Escribe tu intención en un papel, en tiempo presente, y guárdalo donde puedas verlo.', en: 'Write your intention on a piece of paper, in the present tense, and keep it somewhere you can see it.' } },
       { id: 'respirar', min: 2, name: { es: 'Tres respiraciones lentas', en: 'Three slow breaths' },
+        why: { es: 'Respirar despacio te trae al presente y calma el cuerpo para escuchar.' },
         step: { es: 'Haz tres respiraciones lentas. En cada exhalación, repite por dentro: «{p}»', en: 'Take three slow breaths. With each exhale, repeat silently: “{p}”' } },
       { id: 'caminar', min: 3, name: { es: 'Caminar hasta una ventana', en: 'Walk to a window' },
+        why: { es: 'Mover el cuerpo mueve la intención; mirar afuera amplía la mirada.' },
         step: { es: 'Camina despacio hasta una ventana y mira hacia afuera durante un minuto, pensando en {f}.', en: 'Walk slowly to a window and look outside for a minute, thinking about {f}.' } },
       { id: 'abrir', min: 3, name: { es: 'Abrir una ventana', en: 'Open a window' },
+        why: { es: 'El aire nuevo simboliza renovación: dejas entrar lo que deseas invitar.' },
         step: { es: 'Abre una ventana y deja entrar el aire nuevo, como símbolo de lo que deseas invitar.', en: 'Open a window and let fresh air in, as a symbol of what you wish to invite.' } },
       { id: 'manos', min: 4, name: { es: 'Lavarse las manos con agua y decir una frase', en: 'Wash your hands with water and say a phrase' },
+        why: { es: 'El agua es un símbolo universal de limpieza: marca un antes y un después.' },
         step: { es: 'Lávate las manos con agua fresca y, mientras lo haces, di: «{p}»', en: 'Wash your hands with cool water and, as you do, say: “{p}”' } },
       { id: 'hilo', min: 5, name: { es: 'Atar un hilo', en: 'Tie a thread' },
+        why: { es: 'El hilo es un recordatorio que llevas contigo: cada vez que lo veas, vuelves a tu intención.' },
         step: { es: 'Ata un hilo suave alrededor de tu muñeca o de un objeto querido mientras dices: «{p}»', en: 'Tie a soft thread around your wrist or a cherished object while you say: “{p}”' } },
       { id: 'voz', min: 2, name: { es: 'Decir una frase en voz alta', en: 'Say a phrase out loud' },
+        why: { es: 'Decir algo en voz alta lo afirma: tu voz convierte la intención en compromiso.' },
         step: { es: 'Di en voz alta, con calma: «{p}»', en: 'Say out loud, calmly: “{p}”' } },
       { id: 'vela', min: 10, flame: true, name: { es: 'Encender una vela', en: 'Light a candle' },
+        why: { es: 'La llama representa la luz y la atención: mientras arde, sostienes tu intención.' },
         step: { es: 'Enciende una vela, si puede ser de color {c}, y obsérvala unos minutos. Apágala al terminar.', en: 'Light a candle, {c} if you have one, and watch it for a few minutes. Put it out when you finish.' } }
     ];
     const GEST_BY_ID = Object.fromEntries(GESTURES.map(g => [g.id, g]));
+
+    // What each intention's ritual uses, keyed by day. The moon action follows today's phase.
+    const RECIPES = {
+      0: { color: 'dorado',   ingredient: 'laurel',   gesture: 'abrir',    moon: { nueva: 'sembrar', creciente: 'impulsar', llena: 'celebrar', menguante: 'limpieza' } },
+      1: { color: 'amarillo', ingredient: 'semillas', gesture: 'escribir', moon: { nueva: 'sembrar', creciente: 'impulsar', llena: 'gratitud', menguante: 'limpieza' } },
+      2: { color: 'rojo',     ingredient: 'canela',   gesture: 'caminar',  moon: { nueva: 'sembrar', creciente: 'decidir', llena: 'celebrar', menguante: 'limpieza' } },
+      3: { color: 'blanco',   ingredient: 'romero',   gesture: 'voz',      moon: { nueva: 'introspeccion', creciente: 'decidir', llena: 'gratitud', menguante: 'vinculos' } },
+      4: { color: 'verde',    ingredient: 'albahaca', gesture: 'hilo',     moon: { nueva: 'sembrar', creciente: 'impulsar', llena: 'gratitud', menguante: 'limpieza' } },
+      5: { color: 'rosa',     ingredient: 'rosas',    gesture: 'respirar', moon: { nueva: 'introspeccion', creciente: 'decidir', llena: 'gratitud', menguante: 'vinculos' } },
+      6: { color: 'morado',   ingredient: 'sal',      gesture: 'manos',    moon: { nueva: 'soltar', creciente: 'decidir', llena: 'gratitud', menguante: 'limpieza' } }
+    };
 
     /* ---------------- Moon (live) ---------------- */
     const SYNODIC = 29.530588853;
@@ -631,11 +553,8 @@
     const PHASES = ['nueva', 'creciente', 'llena', 'menguante'];
     function phaseFromAge(age) { const s = (age + 3.69) % SYNODIC; return PHASES[Math.min(3, Math.floor(s / 7.38))]; }
 
-
     /* ---------------- State ---------------- */
-    const ROWS = ['intention', 'moon', 'color', 'ingredient', 'gesture'];
     const NUM = { intention: 'I', moon: 'II', color: 'III', ingredient: 'IV', gesture: 'V' };
-    const CAT_COLOR = { intention: '#E06C55', moon: '#5D8CB5', color: '#E9B44C', ingredient: '#8FA77E', gesture: '#D98C8A' };
     const now = new Date();
     const TODAY = now.getDay();
     const AGE = lunarAge(now);
@@ -647,22 +566,7 @@
       set(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); return true; } catch (e) { return false; } }
     };
 
-    const prefs = store.get('rsm.prefs', { table: [] });
-    const defaultPins = () => ({ intention: TODAY, moon: null, color: null, gesture: null });
-    const state = {
-      lang: 'es',
-      table: Array.isArray(prefs.table) ? prefs.table : [],
-      pins: defaultPins(),      // null = left to chance
-      tab: 'intention',
-      values: { intention: null, moon: null, color: null, ingredient: null, gesture: null },
-      locks: { intention: false, moon: false, color: false, ingredient: false, gesture: false },
-      spinning: false,
-      current: null
-    };
-    const hasCandle = () => state.table.includes('vela');
-    const tableIngredients = () => state.table.filter(id => ING_BY_ID[id] && id !== 'ninguno');
-
-    function savePrefs() { store.set('rsm.prefs', { table: state.table }); }
+    const state = { lang: 'es', current: null };
 
     /* ---------------- Helpers ---------------- */
     const $ = sel => document.querySelector(sel);
@@ -670,11 +574,9 @@
     function fill(s, vars) { for (const k in vars) s = s.split('{' + k + '}').join(vars[k]); return s; }
     function t(key, vars) { const s = UI[state.lang][key]; return vars ? fill(s, vars) : s; }
     const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-    const pick = arr => arr[Math.floor(Math.random() * arr.length)];
-    function pickDifferent(pool, current) { return pool.length > 1 ? pick(pool.filter(v => v !== current)) : pool[0]; }
-    function archLabel(a) { return a ? t('archangel', { a: L(ARCH[a]) }) : t('noArch'); }
-    const clip = (s, n) => s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s;
+    const archName = a => L(ARCH[a]);
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const intentionById = day => INTENTIONS.find(i => i.day === day);
 
     let toastTimer;
     function toast(msg) {
@@ -684,68 +586,6 @@
       toastTimer = setTimeout(() => el.classList.remove('show'), 3200);
     }
 
-    /* ---------------- Pools & constraints ---------------- */
-    function intentionById(day) { return INTENTIONS.find(i => i.day === day); }
-
-    function pools(intentionDay) {
-      const intention = intentionById(intentionDay ?? TODAY);
-      let ing;
-      if (state.table.includes('ninguno')) ing = ['ninguno'];
-      else { const chosen = tableIngredients(); ing = chosen.length ? chosen : INGREDIENTS.map(i => i.id); }
-      let gest = GESTURES.map(g => g.id);
-      if (!hasCandle()) gest = gest.filter(id => id !== 'vela');
-      return { intention: INTENTIONS.map(i => i.day), moon: MOON_ACTIONS[PHASE].map(a => a.id), color: intention.colors, ingredient: ing, gesture: gest };
-    }
-
-    // Enforce safety rules on current values, overriding locks when needed. Returns notice keys.
-    function applyConstraints() {
-      const v = state.values, p = pools(v.intention), notes = [];
-      if (v.ingredient && !p.ingredient.includes(v.ingredient)) { v.ingredient = pick(p.ingredient); state.locks.ingredient = false; notes.push('swapIngredient'); }
-      if (v.gesture === 'vela' && !hasCandle()) { v.gesture = pick(p.gesture); state.locks.gesture = false; notes.push('swapCandle'); }
-      if (v.moon && !p.moon.includes(v.moon)) v.moon = pick(p.moon);
-      return notes;
-    }
-
-    /* ---------------- Pins (first screen) ---------------- */
-    function isPinned(cat) {
-      if (cat === 'ingredient') return state.table.includes('ninguno') || tableIngredients().length > 0;
-      return state.pins[cat] != null;
-    }
-    const pinnedCount = () => ROWS.filter(isPinned).length;
-
-    function pinLabel(cat) {
-      if (!isPinned(cat)) return t('rand');
-      const p = state.pins[cat];
-      if (cat === 'intention') return UI[state.lang].dayShort[p] + (p === TODAY ? ' · ' + t('today') : '');
-      if (cat === 'moon') return L(MOON_ACTIONS[PHASE].find(a => a.id === p).name);
-      if (cat === 'color') return L(COLORS[p].name);
-      if (cat === 'gesture') return L(GEST_BY_ID[p].name);
-      if (state.table.includes('ninguno')) return L(NONE_INGREDIENT.name);
-      const n = tableIngredients().length;
-      return n === 1 ? L(ING_BY_ID[tableIngredients()[0]].name) : t('ingCount', { n });
-    }
-
-    function choose(cat, val) {
-      if (cat === 'ingredient') {
-        if (val === 'ninguno') {
-          const candle = state.table.filter(x => x === 'vela');
-          state.table = state.table.includes('ninguno') ? candle : ['ninguno', ...candle];
-        } else {
-          state.table = state.table.filter(x => x !== 'ninguno' || val === 'vela');
-          state.table = state.table.includes(val) ? state.table.filter(x => x !== val) : [...state.table, val];
-          if (val === 'vela' && !hasCandle() && state.pins.gesture === 'vela') state.pins.gesture = null;
-        }
-        savePrefs();
-      } else {
-        const next = val === '__rand' ? null : (cat === 'intention' ? Number(val) : val);
-        state.pins[cat] = state.pins[cat] === next && cat !== 'intention' ? null : next;
-        if (cat === 'intention' && state.pins.color && state.pins.intention != null && !intentionById(state.pins.intention).colors.includes(state.pins.color)) state.pins.color = null;
-        if (cat === 'gesture' && state.pins.gesture === 'vela' && !hasCandle()) { state.table = [...state.table, 'vela']; savePrefs(); }
-      }
-      renderIntro();
-    }
-
-    /* ---------------- Moon drawing ---------------- */
     function moonLitPath(age, cx, cy, r) {
       const k = Math.cos(2 * Math.PI * age / SYNODIC);
       const waxing = age < SYNODIC / 2;
@@ -753,254 +593,91 @@
       return `M ${cx} ${cy - r} A ${r} ${r} 0 0 ${outer} ${cx} ${cy + r} A ${Math.abs(k) * r} ${r} 0 0 ${inner} ${cx} ${cy - r} Z`;
     }
 
-    /* ---------------- Catalog ---------------- */
-    function renderTabs() {
-      $('#tabs').innerHTML = ROWS.map(c => `<button type="button" class="tab" role="tab" data-tab="${c}" aria-selected="${state.tab === c}"><span class="rn">${NUM[c]}.</span>${esc(UI[state.lang].cats[c].name)}</button>`).join('');
-    }
-
-    const moonMini = (size) => `<svg width="${size}" height="${size}" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="#DCE5EE"/><path d="${moonLitPath(AGE, 20, 20, 17)}" fill="#E9B44C"/><circle cx="20" cy="20" r="17" fill="none" stroke="#2A1E19" stroke-width=".8"/></svg>`;
-
-    function renderPlate() {
-      const d = state.pins.intention;
-      if (d == null) {
-        $('#plate-hero').innerHTML = `
-          <div class="anno l"><span class="k">${esc(t('annoDay'))}</span><span class="v">${esc(t('fanDay'))}</span></div>
-          <div class="hero-card fan">${['miguel', 'gabriel', 'rafael'].map(n => `<span class="frame"><img src="arcangeles/${n}.jpg" alt=""></span>`).join('')}</div>
-          <div class="anno r"><span class="k">${esc(t('annoArch'))}</span><span class="v">${esc(t('fanArch'))}</span></div>`;
-        $('#plate-cap').textContent = t('fanCap');
-        return;
-      }
-      const i = intentionById(d);
-      $('#plate-hero').innerHTML = `
-        <div class="anno l"><span class="k">${esc(t('annoDay'))}</span><span class="v">${esc(DAYS[state.lang][d])}${d === TODAY ? `<br><em>${esc(t('today'))}</em>` : ''}</span></div>
-        <div class="hero-card"><span class="frame"><img src="${archImg(i.arch)}" alt="${esc(t('archangel', { a: L(ARCH[i.arch]) }))}"></span></div>
-        <div class="anno r"><span class="k">${esc(t('annoArch'))}</span><span class="v">${esc(L(ARCH[i.arch]))}</span></div>`;
-      $('#plate-cap').innerHTML = `<small>${esc(t('dayIntention'))}</small>${esc(L(i.name))}`;
-    }
-
-    function renderParts() {
-      $('#parts').innerHTML = ROWS.map(c => {
-        const pinned = isPinned(c);
-        let val = pinned ? pinLabel(c) : t('random'), vis = '';
-        if (c === 'intention' && pinned) { const i = intentionById(state.pins.intention); val = `${DAYS[state.lang][state.pins.intention]}: ${L(i.name)}`; vis = thumbHTML(i.arch); }
-        if (c === 'moon') vis = moonMini(28);
-        if (c === 'color' && pinned) vis = `<span class="swatch" style="background:${COLORS[state.pins.color].hex}"></span>`;
-        return `<li><button type="button" class="part" data-tab="${c}" aria-current="${state.tab === c}">
-          <span class="num" aria-hidden="true">${NUM[c]}</span>
-          <span><span class="nm">${esc(UI[state.lang].cats[c].name)}</span><span class="val${pinned ? '' : ' rand'}">${esc(val)}</span></span>
-          <span class="vis" aria-hidden="true">${vis}</span>
-        </button></li>`;
+    /* ---------------- Create: pick an intention ---------------- */
+    function renderIntentions() {
+      $('#intentions').innerHTML = WEEK.map(d => {
+        const i = intentionById(d);
+        return `<button type="button" class="opt" data-day="${d}">
+          <span aria-hidden="true">${thumbHTML(i.arch)}</span>
+          <span><span class="nm">${esc(L(i.name))}${d === TODAY ? `<span class="today">${esc(t('today'))}</span>` : ''}</span>
+          <span class="cap">${esc(DAYS[state.lang][d])} · ${esc(t('archangel', { a: archName(i.arch) }))}</span></span>
+          <span class="go" aria-hidden="true">→</span>
+        </button>`;
       }).join('');
     }
 
-    function opt({ cat, val, pressed, fig, art = '', name, cap = '', capWarn = false, cls = '', stamp }) {
-      return `<button type="button" class="opt ${cls}" data-cat="${cat}" data-val="${esc(val)}" aria-pressed="${pressed}" data-stamp="${esc(stamp || t('pinnedStamp'))}">
-        ${art ? `<span class="art" aria-hidden="true">${art}</span>` : ''}
-        <span><span class="nm">${name}</span>${cap ? `<span class="cap${capWarn ? ' warn' : ''}" style="display:block">${esc(cap)}</span>` : ''}</span>
-      </button>`;
+    // The ritual for an intention: its recipe, with the moon action for today's phase.
+    function selectionFor(day) {
+      const r = RECIPES[day];
+      return {
+        id: Date.now().toString(36), created: new Date().toISOString(),
+        intention: day, moon: r.moon[PHASE], phase: PHASE, lunarDay: LUNAR_DAY,
+        color: r.color, ingredient: r.ingredient, gesture: r.gesture
+      };
     }
 
-    function randOpt(cat) {
-      return opt({ cat, val: '__rand', pressed: state.pins[cat] == null, name: esc(t('random')), cap: t('randomCap'), cls: 'rand', stamp: t('rand') });
-    }
+    /* ---------------- Learn: reference guide ---------------- */
+    const swatchChip = k => `<span class="chip"><span class="swatch" style="background:${COLORS[k].hex}"></span>${esc(L(COLORS[k].name))}</span>`;
 
-    function renderCatalog() {
-      const c = state.tab, T = UI[state.lang];
-      let html = `<div class="cat-head"><h2 class="goth">${esc(T.cats[c].name)}<small>${esc(pinLabel(c))}</small></h2><p class="lede">${esc(T.cats[c].desc)}</p></div>`;
-
-      if (c === 'intention') {
-        html += `<div class="sub-head"><span class="caps">${esc(t('choose'))}</span></div><div class="opts">`;
-        html += randOpt('intention');
-        WEEK.forEach((d, n) => {
-          const i = intentionById(d);
-          html += opt({ cat: c, val: d, pressed: state.pins.intention === d, fig: `fig. ${n + 1}`, art: thumbHTML(i.arch),
-            name: esc(DAYS[state.lang][d]) + (d === TODAY ? `<span class="today">${esc(t('today'))}</span>` : ''),
-            cap: `${L(i.name)} · ${L(ARCH[i.arch])}` });
-        });
-        html += '</div>';
-      } else if (c === 'moon') {
-        const ages = { nueva: 0.5, creciente: 5.5, llena: 14.8, menguante: 22.5 };
-        html += `<div class="sub-head"><span class="caps">${esc(t('phasesTitle'))}</span><span class="it soft">${esc(t('lunarDay', { n: LUNAR_DAY }))}</span></div><div class="phases">`;
-        PHASES.forEach(ph => {
-          const age = ph === PHASE ? AGE : ages[ph];
-          html += `<div class="phase${ph === PHASE ? ' now' : ''}"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="#DCE5EE"/><path d="${moonLitPath(age, 20, 20, 17)}" fill="#E9B44C"/><circle cx="20" cy="20" r="17" fill="none" stroke="#2A1E19" stroke-width=".7"/></svg>${esc(L(PHASE_NAMES[ph]).replace(/^Luna |moon$/gi, '').trim())}<span class="it">${ph === PHASE ? esc(t('today')) : MOON_ACTIONS[ph].map(a => esc(L(a.name).toLowerCase())).join(', ')}</span></div>`;
-        });
-        html += `</div><div class="sub-head"><span class="caps">${esc(t('actionsTitle'))}</span></div><div class="opts single">`;
-        html += randOpt('moon');
-        MOON_ACTIONS[PHASE].forEach((a, n) => {
-          html += opt({ cat: c, val: a.id, pressed: state.pins.moon === a.id, fig: `fig. ${n + 1}`, name: esc(L(a.name)), cap: L(a.step) });
-        });
-        html += '</div>';
-      } else if (c === 'color') {
-        const intent = state.pins.intention != null ? intentionById(state.pins.intention) : null;
-        const keys = intent ? intent.colors : Object.keys(COLORS);
-        html += `<div class="sub-head"><span class="caps">${esc(intent ? t('colorsFor', { i: L(intent.name) }) : t('colorsAll'))}</span></div><div class="opts">`;
-        html += randOpt('color');
-        keys.forEach((k, n) => {
-          const col = COLORS[k];
-          html += opt({ cat: c, val: k, pressed: state.pins.color === k, fig: `fig. ${n + 1}`, art: `<span class="swatch" style="background:${col.hex}"></span>`,
-            name: esc(L(col.name)), cap: `${L(col.m)} · ${archLabel(col.arch)}` });
-        });
-        html += '</div>';
-      } else if (c === 'ingredient') {
-        const n = tableIngredients().length;
-        html += `<div class="sub-head"><span class="caps">${esc(t('tableTitle'))}</span><span class="it soft">${esc(state.table.includes('ninguno') ? L(NONE_INGREDIENT.name) : n ? t('ingCount', { n }) : t('ingAll'))}</span></div><div class="opts">`;
-        [...INGREDIENTS, CANDLE_CHIP, NONE_INGREDIENT].forEach((ing, k) => {
-          const cap = ing.id === 'vela' ? L(SAFETY.llama) : ing.safety.map(s => L(SAFETY[s])).join(' ');
-          const warn = ing.id === 'ruda' || ing.id === 'vela' || ing.safety.includes('aroma') || ing.flame;
-          html += opt({ cat: c, val: ing.id, pressed: state.table.includes(ing.id), fig: `fig. ${k + 1}`, name: esc(L(ing.name)), cap, capWarn: warn, stamp: t('onTable') });
-        });
-        html += '</div>';
-      } else if (c === 'gesture') {
-        html += `<div class="sub-head"><span class="caps">${esc(t('choose'))}</span></div><div class="opts single">`;
-        html += randOpt('gesture');
-        GESTURES.forEach((g, n) => {
-          const cap = t('minutes', { n: g.min }) + (g.flame ? ` · ${hasCandle() ? L(SAFETY.llama) : t('needsCandle')}` : '');
-          html += opt({ cat: c, val: g.id, pressed: state.pins.gesture === g.id, fig: `fig. ${n + 1}`, name: esc(L(g.name)), cap, capWarn: !!g.flame });
-        });
-        html += '</div>';
-      }
-      $('#catalog').innerHTML = html;
-    }
-
-    function renderStatus() {
-      const n = pinnedCount();
-      $('#status').textContent = n === 0 ? t('statusNone') : n === 5 ? t('statusAll') : t('status', { n });
-    }
-
-    function renderIntro() {
-      renderPlate(); renderParts(); renderTabs(); renderCatalog(); renderStatus();
-    }
-
-    /* ---------------- Static text ---------------- */
-    function renderStatic() {
-      document.documentElement.lang = state.lang;
-      document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
-      const date = new Intl.DateTimeFormat(state.lang, { weekday: 'long', day: 'numeric', month: 'short' }).format(now);
-      const moonCap = `${L(PHASE_NAMES[PHASE])} · ${LUNAR_DAY}`;
-      $('#cap-date').textContent = date; $('#cap-moon').textContent = moonCap;
-      document.querySelectorAll('.cap-date').forEach(e => { e.textContent = date; });
-      document.querySelectorAll('.cap-moon').forEach(e => { e.textContent = moonCap; });
-      renderIntro();
-      renderSaved();
-      if (document.querySelector('#screen-slots.active')) renderRows();
-      if (state.current) renderCard(state.current);
-    }
-
-    /* ---------------- Slot rows ---------------- */
-    function itemHTML(row, value) {
-      if (value == null) return '<div class="item"></div>';
-      let main = '', sub = '', pre = '', subClass = 'sub';
-      if (row === 'intention') {
-        const i = intentionById(value);
-        pre = thumbHTML(i.arch);
-        main = esc(L(i.name)) + (value === TODAY ? `<span class="today">${esc(t('today'))}</span>` : '');
-        sub = `${DAYS[state.lang][value]} · ${L(ARCH[i.arch])}`;
-      } else if (row === 'moon') {
-        const a = MOON_ACTIONS[PHASE].find(x => x.id === value);
-        pre = `<svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="#DCE5EE"/><path d="${moonLitPath(AGE, 20, 20, 17)}" fill="#E9B44C"/><circle cx="20" cy="20" r="17" fill="none" stroke="#2A1E19" stroke-width=".8"/></svg>`;
-        main = esc(L(a.name));
-        sub = `${L(PHASE_NAMES[PHASE])} · ${t('lunarDay', { n: LUNAR_DAY })}`;
-      } else if (row === 'color') {
-        const c = COLORS[value];
-        pre = `<span class="swatch" style="background:${c.hex}" aria-hidden="true"></span>` + thumbHTML(c.arch);
-        main = esc(L(c.name));
-        sub = `${archLabel(c.arch)} · ${L(c.m)}`;
-      } else if (row === 'ingredient') {
-        const ing = ING_BY_ID[value];
-        main = esc(L(ing.name));
-        sub = ing.safety.map(s => L(SAFETY[s])).join(' ');
-        if (value === 'ruda' || ing.safety.includes('aroma') || ing.flame) subClass += ' warn';
-      } else if (row === 'gesture') {
-        const g = GEST_BY_ID[value];
-        main = esc(L(g.name));
-        sub = g.flame ? L(SAFETY.llama) : t('minutes', { n: g.min });
-        if (g.flame) subClass += ' warn';
-      }
-      return `<div class="item">${pre}<div class="txt"><div class="main">${main}</div>${sub ? `<div class="${subClass}">${esc(sub)}</div>` : ''}</div></div>`;
-    }
-
-    function renderRows() {
-      $('#rows').innerHTML = ROWS.map(r => {
-        const locked = state.locks[r], label = UI[state.lang].rows[r];
-        return `<div class="row${locked ? ' locked' : ''}" data-row="${r}">
-          <div class="num" aria-hidden="true">${NUM[r]}</div>
-          <div class="row-label" data-kept="${esc(t('kept'))}">${esc(label)}</div>
-          <button type="button" class="toggle" data-lock="${r}" aria-pressed="${locked}" aria-label="${esc(t(locked ? 'unlock' : 'lock', { r: label }))}"><span class="pill"></span></button>
-          <div class="window"><div class="strip">${itemHTML(r, state.values[r])}</div></div>
-        </div>`;
-      }).join('');
-    }
-
-    function updateLock(r) {
-      const row = document.querySelector(`.row[data-row="${r}"]`);
-      if (!row) return;
-      const locked = state.locks[r], label = UI[state.lang].rows[r];
-      row.classList.toggle('locked', locked);
-      const b = row.querySelector('.toggle');
-      b.setAttribute('aria-pressed', String(locked));
-      b.setAttribute('aria-label', t(locked ? 'unlock' : 'lock', { r: label }));
-    }
-
-    /* ---------------- Spin ---------------- */
-    const SPIN_MS = 800, STAGGER_MS = 120;
-
-    function spin(all) {
-      if (state.spinning) return;
-      if (all) ROWS.forEach(r => { state.locks[r] = false; });
-      const targets = ROWS.filter(r => !state.locks[r]);
-      if (!targets.length) { toast(t('allLocked')); return; }
-
-      const prev = { ...state.values }, v = state.values;
-      if (targets.includes('intention')) v.intention = pickDifferent(pools().intention, prev.intention);
-      const p = pools(v.intention);
-      targets.forEach(r => { if (r !== 'intention') v[r] = pickDifferent(p[r], prev[r]); });
-      const notes = applyConstraints();
-      const animate = ROWS.filter(r => targets.includes(r) || v[r] !== prev[r]);
-
-      renderRows();
-      if (reduceMotion) { if (notes.length) toast(t(notes[0])); return; }
-
-      state.spinning = true;
-      setButtonsDisabled(true);
-      const H = document.querySelector('.window').clientHeight;
-      animate.forEach((r, idx) => {
-        const strip = document.querySelector(`.row[data-row="${r}"] .strip`);
-        const fillers = [];
-        for (let i = 0; i < 9; i++) fillers.push(pick(p[r]));
-        const seq = [prev[r], ...fillers, v[r]];
-        strip.innerHTML = seq.map(val => itemHTML(r, val)).join('');
-        strip.style.transition = 'none';
-        strip.style.transform = 'translateY(0)';
-        void strip.offsetHeight;
-        strip.style.transition = `transform ${SPIN_MS}ms cubic-bezier(.15,.75,.25,1) ${idx * STAGGER_MS}ms`;
-        strip.style.transform = `translateY(-${(seq.length - 1) * H}px)`;
+    function renderLearn() {
+      const T = UI[state.lang];
+      const archOrder = [...WEEK.map(d => intentionById(d).arch), 'Sandalfon', 'Metatron'];
+      let html = `<section class="section" id="sec-arch"><h2 class="goth">${esc(T.secArch)}</h2><p class="lede">${esc(T.ledeArch)}</p>`;
+      archOrder.forEach(a => {
+        const A = ARCH[a], i = INTENTIONS.find(x => x.arch === a);
+        const colors = Object.keys(COLORS).filter(k => COLORS[k].arch === a);
+        html += `<article class="learn">
+          <span class="frame"><img src="${archImg(a)}" alt="" width="360" height="480" loading="lazy" decoding="async"></span>
+          <div>
+            <h3 class="goth">${esc(t('archangel', { a: archName(a) }))}</h3>
+            <p class="role">${esc(L(A.role))}</p>
+            <p>${esc(L(A.desc))}</p>
+            <p class="k">${esc(T.invoke)}</p>
+            <ul>${L(A.when).map(w => `<li>${esc(w)}</li>`).join('')}</ul>
+            ${i ? `<p class="k">${esc(T.itsDay)}</p><p class="tight">${esc(DAYS[state.lang][i.day])} · ${esc(L(i.name))}</p>` : ''}
+            ${colors.length ? `<p class="k">${esc(T.itsColor)}</p><div class="chips">${colors.map(swatchChip).join('')}</div>` : ''}
+          </div>
+        </article>`;
       });
-      setTimeout(() => {
-        renderRows();
-        state.spinning = false;
-        setButtonsDisabled(false);
-        if (notes.length) toast(t(notes[0]));
-      }, SPIN_MS + STAGGER_MS * (animate.length - 1) + 60);
+      html += `</section>`;
+
+      html += `<section class="section" id="sec-color"><h2 class="goth">${esc(T.secColor)}</h2><p class="lede">${esc(T.ledeColor)}</p><ul class="entries">`;
+      Object.keys(COLORS).forEach(k => {
+        const c = COLORS[k];
+        html += `<li class="entry"><span class="swatch" style="background:${c.hex}"></span><div><strong>${esc(L(c.name))}</strong>
+          <span class="cap">${esc(L(c.m).charAt(0).toUpperCase() + L(c.m).slice(1))}.</span>
+          <span class="cap">${esc(c.arch ? t('archangel', { a: archName(c.arch) }) : t('noArch'))}</span></div></li>`;
+      });
+      html += `</ul></section>`;
+
+      const ages = { nueva: 0.5, creciente: 5.5, llena: 14.8, menguante: 22.5 };
+      html += `<section class="section" id="sec-moon"><h2 class="goth">${esc(T.secMoon)}</h2><p class="lede">${esc(T.ledeMoon)}</p><ul class="entries">`;
+      PHASES.forEach(ph => {
+        const isNow = ph === PHASE;
+        html += `<li class="entry${isNow ? ' now' : ''}">${moonSVG(isNow ? AGE : ages[ph], 40)}<div>
+          <strong>${esc(L(PHASE_NAMES[ph]))}${isNow ? `<span class="today">${esc(t('today'))}</span>` : ''}</strong>
+          <span class="cap">${esc(L(PHASE_LESSON[ph]))}</span>
+          <span class="cap"><b>${esc(T.goodFor)}</b> ${esc(MOON_ACTIONS[ph].map(a => L(a.name).toLowerCase()).join(' · '))}</span></div></li>`;
+      });
+      html += `</ul></section>`;
+
+      html += `<section class="section" id="sec-ing"><h2 class="goth">${esc(T.secIng)}</h2><p class="lede">${esc(T.ledeIng)}</p><ul class="entries">`;
+      INGREDIENTS.forEach(ing => {
+        const warn = ing.safety.filter(s => s !== 'general').map(s => L(SAFETY[s])).join(' ');
+        html += `<li class="entry"><div class="span"><strong>${esc(L(ing.name))}</strong><span class="cap">${esc(L(ing.m))}</span>${warn ? `<span class="note">${esc(warn)}</span>` : ''}</div></li>`;
+      });
+      html += `</ul></section>`;
+
+      html += `<section class="section" id="sec-gest"><h2 class="goth">${esc(T.secGest)}</h2><p class="lede">${esc(T.ledeGest)}</p><ul class="entries">`;
+      GESTURES.forEach(g => {
+        html += `<li class="entry"><div class="span"><strong>${esc(L(g.name))}<span class="today soft">· ${esc(t('minutes', { n: g.min }))}</span></strong><span class="cap">${esc(L(g.why))}</span>${g.flame ? `<span class="note">${esc(L(SAFETY.llama))}</span>` : ''}</div></li>`;
+      });
+      html += `</ul></section>`;
+      $('#learn-body').innerHTML = html;
     }
 
-    function setButtonsDisabled(d) { ['#btn-spin', '#btn-spin-all', '#btn-create'].forEach(s => { $(s).disabled = d; }); }
-
-    // Start the machine from the first screen: pinned parts arrive kept, the rest spin.
-    function startMachine(useRandom) {
-      const v = state.values;
-      ROWS.forEach(r => { v[r] = null; state.locks[r] = false; });
-      if (!useRandom) {
-        v.intention = state.pins.intention; v.moon = state.pins.moon; v.color = state.pins.color; v.gesture = state.pins.gesture;
-        if (state.table.includes('ninguno')) v.ingredient = 'ninguno';
-        else if (tableIngredients().length === 1) v.ingredient = tableIngredients()[0];
-        ROWS.forEach(r => { state.locks[r] = v[r] != null; });
-      }
-      state.current = null;
-      show('screen-slots');
-      renderRows();
-      if (ROWS.every(r => state.locks[r])) { const notes = applyConstraints(); renderRows(); if (notes.length) toast(t(notes[0])); return; }
-      requestAnimationFrame(() => spin(useRandom));
+    function moonSVG(age, size) {
+      return `<svg width="${size}" height="${size}" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="#DCE5EE"/><path d="${moonLitPath(age, 20, 20, 17)}" fill="#E9B44C"/><circle cx="20" cy="20" r="17" fill="none" stroke="#2A1E19" stroke-width=".8"/></svg>`;
     }
 
     /* ---------------- Ritual composition ---------------- */
@@ -1011,7 +688,7 @@
       const color = COLORS[sel.color];
       const ing = ING_BY_ID[sel.ingredient] || NONE_INGREDIENT;
       const gest = GEST_BY_ID[sel.gesture];
-      const f = tr(intention.focus), p = tr(intention.phrase);
+      const f = tr(intention.focus), p = tr(intention.phrase), A = ARCH[intention.arch];
 
       const steps = [fill(T.stepColor, { c: tr(color.lower), m: tr(color.m) })];
       if (ing.use) steps.push(fill(T.stepIngredient, { u: tr(ing.use), f }));
@@ -1027,24 +704,16 @@
       return {
         title: tr(intention.title),
         meta: `${tr(PHASE_NAMES[sel.phase])} · ${fill(T.lunarDay, { n: sel.lunarDay })} · ${fill(T.minutes, { n: minutes })}`,
+        // [row, label, value, what it means]
         items: [
-          ['intention', T.rows.intention, tr(intention.name)],
-          ['moon', T.rows.moon, tr(moon.name)],
-          ['color', T.rows.color, `${tr(color.name)} · ${color.arch ? fill(T.archangel, { a: tr(ARCH[color.arch]) }) : T.noArch}`],
-          ['ingredient', T.rows.ingredient, ing.id === 'ninguno' ? T.withNoIngredient : tr(ing.name)],
-          ['gesture', T.rows.gesture, tr(gest.name)]
+          ['intention', T.rows.intention, tr(intention.name), fill(T.whyIntention, { a: tr(A), r: tr(A.role) })],
+          ['moon', T.rows.moon, tr(moon.name), tr(PHASE_LESSON[sel.phase])],
+          ['color', T.rows.color, `${tr(color.name)} · ${color.arch ? fill(T.archangel, { a: tr(ARCH[color.arch]) }) : T.noArch}`, fill(T.whyColor, { m: tr(color.m) })],
+          ['ingredient', T.rows.ingredient, ing.id === 'ninguno' ? T.withNoIngredient : tr(ing.name), tr(ing.m)],
+          ['gesture', T.rows.gesture, tr(gest.name), tr(gest.why)]
         ],
         steps, prompt: tr(intention.prompt), gratitude: tr(intention.gratitude), safety,
-        colorHex: color.hex, arch: intention.arch, archName: tr(ARCH[intention.arch]),
-        dayName: DAYS[lang][sel.intention]
-      };
-    }
-
-    function currentSelection() {
-      return {
-        id: Date.now().toString(36), created: new Date().toISOString(),
-        intention: state.values.intention, moon: state.values.moon, phase: PHASE, lunarDay: LUNAR_DAY,
-        color: state.values.color, ingredient: state.values.ingredient, gesture: state.values.gesture
+        arch: intention.arch, archName: tr(A), dayName: DAYS[lang][sel.intention]
       };
     }
 
@@ -1056,7 +725,7 @@
         <figure class="plate-art"><span class="frame"><img src="${archImg(r.arch)}" alt="" width="360" height="480"></span><figcaption>${esc(fill(T.archangel, { a: r.archName }))}</figcaption></figure>
         <h2 class="goth">${esc(r.title)}</h2>
         <p class="meta">${esc(r.meta)}</p>
-        <dl class="legend">${r.items.map(([k, label, v]) => `<div><dt><span class="rn">${NUM[k]}.</span>${esc(label)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
+        <dl class="legend">${r.items.map(([k, label, v, why]) => `<div><dt><span class="rn">${NUM[k]}.</span>${esc(label)}</dt><dd>${esc(v)}<span class="why">${esc(why)}</span></dd></div>`).join('')}</dl>
         <h3>${esc(T.stepsTitle)}</h3>
         <ol class="steps">${r.steps.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
         <h3>${esc(T.promptTitle)}</h3>
@@ -1111,21 +780,13 @@
       return new Promise(res => { const img = new Image(); img.onload = () => res(img); img.onerror = () => res(null); img.src = src; });
     }
 
-    function roundRect(ctx, x, y, w, h, r) {
-      ctx.beginPath();
-      ctx.moveTo(x + r, y);
-      ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
-      ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r);
-      ctx.closePath();
-    }
-
     const ROMAN = ['i', 'ii', 'iii', 'iv', 'v', 'vi'];
 
     // Lays out and paints the ritual plate; img (archangel art) is optional.
     function paintCard(r, T, img, dateStr) {
       const W = 1080, PAD = 100, IW = W - PAD * 2;
       const GOTH = "'Oranienbaum', 'Bodoni 72', Didot, serif", SERIF = "'EB Garamond', Garamond, Georgia, serif";
-      const C = { choco: '#6B3F35', paper: '#EEE4D8', hi: '#F6F0E8', ink: '#2A1E19', soft: '#6E5A50', rule: 'rgba(42,30,25,0.18)', coral: '#E06C55', ochre: '#E9B44C', ochreDeep: '#B9852B', blue: '#5D8CB5' };
+      const C = { choco: '#6B3F35', paper: '#EEE4D8', hi: '#F6F0E8', ink: '#2A1E19', soft: '#6E5A50', rule: 'rgba(42,30,25,0.18)', coral: '#E06C55', ochre: '#E9B44C', ochreDeep: '#B9852B' };
       const measure = document.createElement('canvas').getContext('2d');
       const ops = [];
       let y = PAD - 10;
@@ -1154,26 +815,18 @@
       text(r.meta, `italic 400 30px ${SERIF}`, C.soft, { lh: 42, center: true });
       y += 30;
 
-      // legend
+      // legend: one row per part, with what it means
       rule(true);
-      const colW = IW / 2;
-      for (let i = 0; i < r.items.length; i += 2) {
-        const pair = r.items.slice(i, i + 2), rowTop = y;
-        let maxY = y;
-        pair.forEach(([k, label, v], j) => {
-          const full = pair.length === 1;
-          const x = PAD + (j ? colW + 18 : 0), w = full ? IW : colW - 26;
-          let cy = rowTop + 34;
-          ops.push({ t: 'text', s: NUM[k] + '.', font: `italic 400 24px ${SERIF}`, color: C.soft, x, y: cy, align: 'left' });
-          ops.push({ t: 'text', s: label, font: `italic 400 22px ${SERIF}`, color: C.soft, x: x + 42, y: cy, align: 'left' });
-          measure.font = `500 28px ${SERIF}`;
-          wrapLines(measure, v, w).forEach(l => { cy += 34; ops.push({ t: 'text', s: l, font: `500 28px ${SERIF}`, color: C.ink, x, y: cy, align: 'left' }); });
-          maxY = Math.max(maxY, cy + 16);
-        });
-        if (pair.length === 2) ops.push({ t: 'vline', x: PAD + colW, y1: rowTop, y2: maxY });
-        y = maxY;
+      r.items.forEach(([k, label, v, why]) => {
+        y += 6;
+        const top = y + 32;
+        ops.push({ t: 'text', s: NUM[k] + '.', font: `italic 400 24px ${SERIF}`, color: C.soft, x: PAD, y: top, align: 'left' });
+        text(label, `italic 400 22px ${SERIF}`, C.soft, { lh: 32, x: PAD + 46, maxW: IW - 46 });
+        text(v, `500 28px ${SERIF}`, C.ink, { lh: 36, x: PAD + 46, maxW: IW - 46 });
+        text(why, `italic 400 24px ${SERIF}`, C.soft, { lh: 32, x: PAD + 46, maxW: IW - 46 });
+        y += 18;
         rule(false);
-      }
+      });
       y += 26;
 
       text(T.stepsTitle.toUpperCase(), `400 50px ${GOTH}`, C.choco, { lh: 54 });
@@ -1213,7 +866,6 @@
 
       for (const o of ops) {
         if (o.t === 'line') { ctx.strokeStyle = o.strong ? 'rgba(42,30,25,.45)' : C.rule; ctx.lineWidth = o.strong ? 2 : 1.5; ctx.beginPath(); ctx.moveTo(PAD, o.y); ctx.lineTo(W - PAD, o.y); ctx.stroke(); }
-        else if (o.t === 'vline') { ctx.strokeStyle = C.rule; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(o.x, o.y1); ctx.lineTo(o.x, o.y2); ctx.stroke(); }
         else if (o.t === 'bar') { ctx.fillStyle = C.ochre; ctx.fillRect(o.x, o.y1, 4, o.y2 - o.y1); }
         else if (o.t === 'img') {
           ctx.fillStyle = C.hi; ctx.fillRect(o.x - 12, o.y - 12, o.w + 24, o.h + 24);
@@ -1256,58 +908,42 @@
     /* ---------------- Navigation ---------------- */
     function show(id) {
       document.querySelectorAll('.screen').forEach(s => s.classList.toggle('active', s.id === id));
-      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+      const mode = id === 'screen-learn' ? 'learn' : 'create';
+      document.querySelectorAll('.modes [data-mode]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.mode === mode)));
+      window.scrollTo({ top: 0, behavior: 'auto' });
     }
 
-    function openTab(cat, scroll) {
-      state.tab = cat;
-      renderParts(); renderTabs(); renderCatalog();
-      if (scroll && window.innerWidth < 980) {
-        const top = $('#tabs').getBoundingClientRect().top + window.scrollY - 58;
-        window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
-      }
+    function openPlan(sel) {
+      state.current = sel;
+      renderCard(sel);
+      show('screen-card');
     }
 
     /* ---------------- Events ---------------- */
-    $('#parts').addEventListener('click', e => { const b = e.target.closest('[data-tab]'); if (b) openTab(b.dataset.tab, true); });
-    $('#tabs').addEventListener('click', e => { const b = e.target.closest('[data-tab]'); if (b) openTab(b.dataset.tab, false); });
-    $('#catalog').addEventListener('click', e => { const b = e.target.closest('.opt'); if (b) choose(b.dataset.cat, b.dataset.val); });
-
-    $('#btn-go').addEventListener('click', () => startMachine(false));
-    $('#btn-random').addEventListener('click', () => startMachine(true));
-    $('#btn-reset').addEventListener('click', () => { state.pins = defaultPins(); state.table = []; savePrefs(); renderIntro(); });
-    $('#btn-adjust').addEventListener('click', () => { show('screen-intro'); });
-
-    $('#rows').addEventListener('click', e => {
-      const b = e.target.closest('[data-lock]');
-      if (!b || state.spinning) return;
-      const r = b.dataset.lock;
-      state.locks[r] = !state.locks[r];
-      updateLock(r);
+    document.querySelector('.modes').addEventListener('click', e => {
+      const b = e.target.closest('[data-mode]');
+      if (b) show(b.dataset.mode === 'learn' ? 'screen-learn' : 'screen-create');
     });
-    $('#btn-spin').addEventListener('click', () => spin(false));
-    $('#btn-spin-all').addEventListener('click', () => spin(true));
-    $('#btn-create').addEventListener('click', () => {
-      const notes = applyConstraints();
-      if (notes.length) { renderRows(); toast(t(notes[0])); }
-      state.current = currentSelection();
-      renderCard(state.current);
-      show('screen-card');
+    $('#intentions').addEventListener('click', e => {
+      const b = e.target.closest('[data-day]');
+      if (b) openPlan(selectionFor(Number(b.dataset.day)));
+    });
+    $('#jump').addEventListener('click', e => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
     });
 
     $('#btn-save').addEventListener('click', saveCurrent);
     $('#btn-download').addEventListener('click', downloadImage);
-    $('#btn-again').addEventListener('click', () => {
-      state.current = null;
-      if (ROWS.some(r => state.values[r] == null)) startMachine(false); else { show('screen-slots'); renderRows(); }
-    });
-    $('#btn-home').addEventListener('click', () => { state.current = null; show('screen-intro'); });
+    $('#btn-other').addEventListener('click', () => { state.current = null; show('screen-create'); });
 
     $('#saved-list').addEventListener('click', e => {
       const v = e.target.closest('[data-view]'), d = e.target.closest('[data-del]');
       if (v) {
         const s = getSaved().find(x => x.id === v.dataset.view);
-        if (s) { state.current = s; renderCard(s); show('screen-card'); }
+        if (s) openPlan(s);
       } else if (d) {
         if (!store.set(SAVED_KEY, getSaved().filter(x => x.id !== d.dataset.del))) toast(t('saveError'));
         renderSaved();
@@ -1315,7 +951,12 @@
     });
 
     /* ---------------- Init ---------------- */
-    renderStatic();
+    const date = new Intl.DateTimeFormat(state.lang, { weekday: 'long', day: 'numeric', month: 'short' }).format(now);
+    document.querySelectorAll('.cap-date').forEach(e => { e.textContent = date; });
+    document.querySelectorAll('.cap-moon').forEach(e => { e.textContent = `${L(PHASE_NAMES[PHASE])} · ${LUNAR_DAY}`; });
+    renderIntentions();
+    renderLearn();
+    renderSaved();
   })();
   </script>
 </body>
