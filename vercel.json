@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/rituales", "destination": "/rituales/", "permanent": true },
     { "source": "/landing", "destination": "/", "permanent": true },
     { "source": "/landing/", "destination": "/", "permanent": true },
     { "source": "/landing/:path+", "destination": "/:path+", "permanent": true }
