@@ -146,19 +146,19 @@
     .h-lesson { font-family: var(--goth); font-weight: 400; text-transform: uppercase; color: var(--choco); font-size: clamp(40px, 9vw, 64px); line-height: .92; }
     .hint { font-style: italic; color: var(--ink-soft); font-size: 15px; margin-top: 4px; }
 
-    /* Archangel rail */
-    .rail { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 -20px; padding: 6px 20px 26px; overscroll-behavior-x: contain; }
-    .rail::-webkit-scrollbar { display: none; }
-    .tarot { flex: 0 0 min(64vw, 236px); scroll-snap-align: center; transition: transform .7s var(--spring); }
+    /* Archangel grid: wraps with the page, no sideways scrolling */
+    .rail { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 6px 0 10px; }
+    .tarot { width: 100%; transition: transform .7s var(--spring); }
+    .rail > .tarot:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 6px); }
     .tarot:hover { transform: translateY(-6px); }
     .tarot:active { transform: scale(.98); }
     .tarot .art { display: block; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 20px 20px 6px 6px; }
     .tarot img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--spring); }
     .tarot:hover img { transform: scale(1.04); }
-    .tarot .cap { display: grid; gap: 2px; padding: 14px 16px 16px; }
+    .tarot .cap { display: grid; gap: 2px; padding: 12px 12px 14px; }
     .tarot .day { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
-    .tarot strong { font-size: 28px; }
-    .tarot .role { font-style: italic; color: var(--coral); font-size: 15.5px; }
+    .tarot strong { font-size: 23px; }
+    .tarot .role { font-style: italic; color: var(--coral); font-size: 14.5px; line-height: 1.25; }
     .tarot .more { display: inline-flex; align-items: center; gap: 6px; font-style: italic; font-size: 14.5px; color: var(--ink-soft); margin-top: 6px; }
 
     /* Moon tiles */
@@ -298,7 +298,10 @@
     @media (min-width: 768px) {
       .wrap { padding: 0 48px; }
       .lesson { padding-left: 48px; padding-right: 48px; }
-      .rail { margin: 0 -48px; padding-left: 48px; padding-right: 48px; }
+      .rail { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+      .rail > .tarot:last-child:nth-child(odd) { grid-column: auto; width: 100%; }
+      .tarot strong { font-size: 28px; }
+      .tarot .cap { padding: 14px 16px 16px; }
       .grid-2.colors, .grid-2.ings { grid-template-columns: repeat(3, 1fr); }
       .deck { grid-template-columns: 1fr 1fr; gap: 16px; }
       .chapters { grid-template-columns: 1fr 1fr; }
@@ -320,7 +323,6 @@
       .chapter { padding-top: 160px; }
       .lesson { grid-template-columns: 4fr 8fr; gap: 64px; padding-top: 120px; }
       .lesson-head { position: sticky; top: 110px; align-self: start; }
-      .rail { margin: 0 -48px 0 0; padding-left: 0; }
       /* Z-axis cascade: cards sit slightly askew and settle on hover */
       .deck-card:nth-child(odd) { transform: rotate(-.8deg); }
       .deck-card:nth-child(even) { transform: rotate(.8deg) translateY(14px); }
@@ -396,7 +398,7 @@
     <article class="lesson wrap" id="l-arch">
       <div class="lesson-head rv"><span class="numeral">I</span><span class="eyebrow">Lección I</span><h3 class="h-lesson">Los arcángeles</h3>
         <p class="lede">Cada día de la semana tiene una intención y un arcángel que la acompaña. Toca una carta para conocerlo.</p></div>
-      <div><div class="rail" id="rail-arch"></div><p class="hint">Desliza para ver los nueve →</p></div>
+      <div><div class="rail" id="rail-arch"></div></div>
     </article>
 
     <article class="lesson wrap" id="l-moon">
